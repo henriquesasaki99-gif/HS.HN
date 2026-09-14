@@ -1,1 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#041525">
+<title>Sistema de Clientes | HS Start Digital + HN Marketing</title>
+<style>
+:root{
+  --navy:#041525;--navy2:#062a49;--blue:#087ce1;--cyan:#21c7ff;--gold:#ffb400;
+  --ice:#f4f8fc;--white:#fff;--ink:#0c1b2d;--muted:#6b7c8e;--line:#dde8f3;
+  --green:#18a66a;--red:#ec4561;--orange:#ff9418;--shadow:0 18px 50px rgba(0,28,54,.12);
+}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--ice);color:var(--ink)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
+.hidden{display:none!important}.money-blur{filter:blur(7px);user-select:none}
+.login-shell{min-height:100vh;display:grid;grid-template-columns:1.08fr .92fr;background:
+  radial-gradient(circle at 15% 25%,rgba(10,126,225,.24),transparent 28%),
+  linear-gradient(145deg,#020c17,#041525 50%,#07345a);color:#fff}
+.login-brand{padding:clamp(34px,6vw,90px);display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.login-brand:before{content:"";position:absolute;right:-160px;top:40px;width:560px;height:560px;border-radius:50%;border:1px solid rgba(49,194,255,.24);box-shadow:0 0 100px rgba(12,126,225,.18)}
+.login-brand:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to right,black,transparent)}
+.logo-word{position:relative;z-index:2;font-size:clamp(48px,8vw,96px);font-weight:1000;font-style:italic;letter-spacing:-.08em}
+.logo-word .blue{color:#38b9ff}.login-brand h1{position:relative;z-index:2;font-size:clamp(34px,4.2vw,66px);line-height:.98;letter-spacing:-.055em;margin:28px 0 16px;max-width:760px}
+.login-brand h1 span{color:var(--cyan)}.login-brand p{position:relative;z-index:2;max-width:620px;color:#b9d2e4;line-height:1.65;font-size:17px}
+.login-points{position:relative;z-index:2;display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.login-points span{padding:9px 11px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.05);font-size:12px;color:#d7ebf9}
+.login-box-wrap{display:grid;place-items:center;padding:28px;background:rgba(255,255,255,.04);backdrop-filter:blur(8px)}
+.login-box{width:min(450px,100%);background:#fff;color:var(--ink);padding:30px;border-radius:26px;box-shadow:0 30px 90px rgba(0,0,0,.35)}
+.login-box h2{margin:0 0 7px;font-size:28px}.login-box>p{margin:0 0 24px;color:var(--muted);font-size:13px;line-height:1.55}
+.form-group{margin:0 0 13px}.form-group label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:900;color:#5d6d80;margin-bottom:6px}
+.field{width:100%;min-height:44px;border:1px solid #d9e5f1;background:#fbfdff;border-radius:12px;padding:10px 12px;outline:none}
+.field:focus{border-color:#4aaaf8;box-shadow:0 0 0 3px rgba(8,124,225,.08)}textarea.field{min-height:90px;resize:vertical}
+.btn{border:0;border-radius:12px;min-height:42px;padding:0 15px;font-weight:900}
+.btn-primary{background:linear-gradient(135deg,#087ce1,#20bdf8);color:#fff;box-shadow:0 9px 24px rgba(8,124,225,.24)}
+.btn-dark{background:#07192c;color:#fff}.btn-light{background:#edf5fc;color:#12456f;border:1px solid #dce9f6}.btn-danger{background:#e94460;color:#fff}.btn-gold{background:linear-gradient(135deg,#ffc82e,#ff9418);color:#142536}
+.login-btn{width:100%;min-height:49px;margin-top:5px}.login-error{min-height:20px;color:#c21c3a;font-size:12px;margin-top:10px}
+.demo-box{margin-top:16px;padding:13px;border-radius:14px;background:#f5f9fd;border:1px solid #e2ecf5;font-size:11px;color:#607488;line-height:1.6}.demo-box b{color:#153e63}
+.back-site{display:inline-flex;gap:8px;align-items:center;margin-top:16px;font-size:12px;color:#477494;font-weight:800}
 
+.app{display:none;grid-template-columns:265px 1fr;min-height:100vh}
+.sidebar{height:100vh;position:sticky;top:0;background:
+ radial-gradient(circle at 20% 10%,rgba(27,184,255,.22),transparent 28%),
+ linear-gradient(180deg,#072540,#03121f);color:#fff;padding:18px 14px;border-right:1px solid rgba(255,255,255,.06);overflow:auto}
+.brandbox{padding:16px;border-radius:18px;border:1px solid rgba(47,189,255,.23);background:rgba(255,255,255,.035)}
+.brandline{font-size:26px;font-weight:1000;font-style:italic}.brandline span{color:#3ec8ff}.brandbox small{display:block;color:#9fc2dc;margin-top:5px;line-height:1.4}
+.user-card{display:flex;gap:10px;align-items:center;padding:12px 9px;margin:12px 0 3px}.avatar{width:39px;height:39px;border-radius:50%;background:linear-gradient(135deg,#0a83e2,#18d2ff);display:grid;place-items:center;font-weight:950;flex:0 0 auto}.user-card b{display:block;font-size:12px}.user-card span{font-size:10px;color:#90b2ca}
+.nav-title{font-size:10px;color:#678ba6;text-transform:uppercase;letter-spacing:.14em;margin:18px 9px 7px;font-weight:900}.nav-btn{width:100%;border:0;background:transparent;color:#d2e5f4;display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:12px;text-align:left;margin:3px 0;font-weight:760}.nav-btn:hover,.nav-btn.active{background:linear-gradient(90deg,rgba(7,124,225,.38),rgba(32,189,248,.08));color:#fff}.nav-btn.active{box-shadow:inset 3px 0 0 #30c9ff}.nav-icon{width:22px;text-align:center}.logout{margin-top:18px;border:1px solid rgba(255,255,255,.1)}
+.main{min-width:0}.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 26px;background:rgba(255,255,255,.95);backdrop-filter:blur(14px);border-bottom:1px solid #e2ecf5;position:sticky;top:0;z-index:20}
+.mobile-menu{display:none;border:0;background:#edf5fc;border-radius:10px;padding:9px 11px}.page-title b{display:block;font-size:16px}.page-title span{font-size:11px;color:var(--muted)}
+.top-actions{display:flex;align-items:center;gap:8px}.role-pill{padding:7px 10px;border-radius:999px;font-size:10px;font-weight:900;background:#edf6ff;color:#1169a9}.notif{border:1px solid #d9e7f4;background:#fff;border-radius:11px;padding:9px 11px}
+.content{padding:25px}.page{display:none}.page.active{display:block}
+.hero{position:relative;overflow:hidden;min-height:170px;border-radius:23px;padding:25px;color:#fff;background:
+ linear-gradient(90deg,rgba(2,18,33,.98),rgba(4,54,91,.94),rgba(8,124,225,.76));box-shadow:var(--shadow)}
+.hero:after{content:"";position:absolute;right:-30px;top:-80px;width:330px;height:330px;border-radius:50%;border:2px solid rgba(44,198,255,.19);box-shadow:0 0 80px rgba(20,177,255,.1)}.hero .kicker{position:relative;z-index:2;font-size:11px;letter-spacing:.16em;color:#6edbff;font-weight:900}.hero h1{position:relative;z-index:2;margin:9px 0 8px;font-size:31px;line-height:1.05;max-width:800px}.hero h1 span{color:#40ceff}.hero p{position:relative;z-index:2;margin:0;max-width:760px;color:#c7dced;font-size:13px;line-height:1.55}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:17px 0}.metric{background:#fff;border:1px solid #e1ebf5;border-radius:17px;padding:17px;box-shadow:0 7px 24px rgba(0,28,54,.05)}.metric .label{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#738497;font-weight:900}.metric .value{font-size:25px;font-weight:950;margin:7px 0 3px}.metric .sub{font-size:11px;color:#7d8ea0}
+.section-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}.card{background:#fff;border:1px solid #e0eaf4;border-radius:19px;padding:17px;box-shadow:0 7px 24px rgba(0,28,54,.05)}.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:13px}.card-head h3{margin:0;font-size:15px}.card-head p{margin:4px 0 0;color:var(--muted);font-size:11px}.badge{display:inline-flex;padding:5px 8px;border-radius:999px;background:#edf6ff;color:#1d6aa3;font-size:10px;font-weight:900}.badge.green{background:#eafff4;color:#087247}.badge.orange{background:#fff3df;color:#9a5c00}.badge.red{background:#fff0f3;color:#b31d3a}
+.chartbox{height:255px;background:linear-gradient(180deg,#fbfdff,#f3f8fd);border:1px solid #edf3f9;border-radius:14px;padding:9px}canvas{width:100%;height:100%}
+.list{display:grid;gap:8px}.list-item{display:flex;gap:9px;align-items:flex-start;border:1px solid #e6eef6;background:#fbfdff;border-radius:13px;padding:11px}.dot{width:9px;height:9px;border-radius:50%;background:#0b87e6;margin-top:5px}.dot.red{background:#ee4562}.dot.orange{background:#ff9d1d}.list-main{min-width:0;flex:1}.list-main b{display:block;font-size:12px}.list-main span{display:block;font-size:11px;color:var(--muted);margin-top:3px;line-height:1.4}
+.page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:15px}.page-head h2{margin:0;font-size:25px}.page-head p{margin:5px 0 0;font-size:12px;color:var(--muted)}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:12px}.grow{flex:1;min-width:210px}
+.table-wrap{overflow:auto;border:1px solid #e0eaf4;border-radius:16px;background:#fff}table{border-collapse:collapse;width:100%;min-width:850px}th,td{padding:12px 13px;border-bottom:1px solid #edf2f7;text-align:left;font-size:12px;vertical-align:middle}th{font-size:10px;color:#6f8193;text-transform:uppercase;letter-spacing:.05em;background:#f8fbfe;position:sticky;top:0}tr:hover td{background:#fbfdff}.link{border:0;background:none;color:#087ce1;font-weight:900;padding:0}.small{border:1px solid #d9e7f4;background:#fff;border-radius:8px;padding:6px 8px;font-size:10px}
+.kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.kan-col{background:#edf5fc;border:1px solid #dbe8f4;border-radius:16px;padding:11px;min-height:330px}.kan-title{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#52708c;font-weight:950;margin:2px 2px 10px}.task-card{background:#fff;border:1px solid #dde9f4;border-radius:13px;padding:11px;margin-bottom:9px}.task-card h4{margin:0 0 7px;font-size:12px}.task-card p{margin:0 0 8px;font-size:11px;color:var(--muted)}.task-meta{display:flex;justify-content:space-between;gap:7px;font-size:10px;color:#6c8196}
+.service-grid,.creative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.service-card,.creative-card{background:#fff;border:1px solid #e0eaf4;border-radius:17px;overflow:hidden}.service-top{padding:16px;background:linear-gradient(135deg,#05213a,#087ce1);color:#fff}.service-top h3{margin:6px 0 4px;font-size:17px}.service-top p{margin:0;color:#cbe7fa;font-size:11px}.service-body,.creative-body{padding:14px}.progress{height:8px;background:#e7eef6;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,#0786e7,#2bcdfc);border-radius:999px}.service-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:11px 0}.mini-stat{background:#f6faff;border:1px solid #e6eef6;border-radius:11px;padding:9px}.mini-stat b{display:block;font-size:13px}.mini-stat span{font-size:9px;color:var(--muted)}.creative-cover{height:120px;background:linear-gradient(135deg,#031525,#0c80df,#25d0ff);display:grid;place-items:center;color:#fff;font-size:36px;font-weight:950}.creative-body h4{margin:8px 0 5px}.creative-body p{font-size:11px;color:var(--muted);line-height:1.5;margin:0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.form-grid.one{grid-template-columns:1fr}.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,14,27,.7);z-index:100}.modal.show{display:flex}.modal-card{width:min(820px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:21px;box-shadow:0 30px 90px rgba(0,0,0,.35)}.modal-head{display:flex;justify-content:space-between;align-items:center;padding:17px 19px;border-bottom:1px solid #e5edf5}.modal-head h3{margin:0}.modal-body{padding:19px}.close{border:0;background:#edf5fc;border-radius:9px;padding:7px 9px}
+.client-hero{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.client-hero h1{margin-bottom:10px}.status-ring{width:114px;height:114px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#20c5ff var(--progress),rgba(255,255,255,.12) 0);position:relative}.status-ring:after{content:"";position:absolute;inset:9px;border-radius:50%;background:#07335a}.status-ring b{position:relative;z-index:2;font-size:23px}.ledger-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.settings-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.settings-tab{border:1px solid #dbe7f2;background:#fff;border-radius:10px;padding:8px 10px;font-weight:850;font-size:11px}.settings-tab.active{background:#07213a;color:#fff;border-color:#07213a}.settings-panel{display:none}.settings-panel.active{display:block}
+.role-rule{border:1px solid #e3ecf5;border-radius:13px;padding:13px;margin-bottom:9px}.role-rule b{display:block;margin-bottom:4px}.role-rule span{font-size:11px;color:var(--muted);line-height:1.5}.notice{padding:12px;border-radius:12px;background:#fff8e5;border:1px solid #ffe1a0;color:#795400;font-size:11px;line-height:1.55}.empty{text-align:center;padding:25px;color:#7b8ea0;font-size:12px}
+.toast{position:fixed;right:17px;bottom:17px;background:#06192c;color:#fff;padding:12px 15px;border-radius:12px;box-shadow:var(--shadow);display:none;z-index:130;font-size:12px}.toast.show{display:block}
+@media(max-width:1080px){.grid4{grid-template-columns:repeat(2,1fr)}.section-grid,.ledger-grid{grid-template-columns:1fr}.service-grid,.creative-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:820px){.login-shell{grid-template-columns:1fr}.login-brand{padding:45px 26px;min-height:380px}.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-280px;width:265px;z-index:80;transition:.22s}.sidebar.open{left:0}.mobile-menu{display:block}.topbar{padding:0 15px}.content{padding:16px}.grid4,.kanban,.service-grid,.creative-grid,.form-grid,.client-hero{grid-template-columns:1fr}.status-ring{display:none}}
+</style>
+</head>
+<body>
+<section class="login-shell" id="loginScreen">
+  <div class="login-brand">
+    <div class="logo-word">HS<span class="blue">HN</span></div>
+    <h1>GESTÃO <span>INTELIGENTE</span> PARA CADA PROJETO.</h1>
+    <p>Um único ambiente para equipe e clientes acompanharem serviços, tarefas, execução, pagamentos e evolução dos projetos HS Start Digital + HN Marketing.</p>
+    <div class="login-points"><span>✓ Administração completa</span><span>✓ Operação da equipe</span><span>✓ Portal individual do cliente</span></div>
+  </div>
+  <div class="login-box-wrap">
+    <form class="login-box" id="loginForm">
+      <h2>Entrar no sistema</h2>
+      <p>Acesso separado para Administrador, Funcionário e Cliente.</p>
+      <div class="form-group"><label>Usuário ou e-mail</label><input class="field" id="loginUser" autocomplete="username" required></div>
+      <div class="form-group"><label>Senha</label><input class="field" id="loginPass" type="password" autocomplete="current-password" required></div>
+      <button class="btn btn-primary login-btn">ENTRAR →</button>
+      <div class="login-error" id="loginError"></div>
+      <div class="demo-box"><b>Acessos iniciais para teste:</b><br>Administrador: <b>admin</b> / <b>admin123</b><br>Funcionário: <b>funcionario</b> / <b>func123</b><br>Cliente: <b>cliente</b> / <b>cliente123</b></div>
+      <a class="back-site" href="index.html">← Voltar ao site HS + HN</a>
+    </form>
+  </div>
+</section>
+
+<div class="app" id="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brandbox"><div class="brandline">HS<span>HN</span></div><small>HS Start Digital × HN Marketing<br>Sistema de Clientes</small></div>
+    <div class="user-card"><div class="avatar" id="avatar">HS</div><div><b id="userName">Usuário</b><span id="userRole">Perfil</span></div></div>
+    <div class="nav-title">Painel</div>
+    <button class="nav-btn" data-page="dashboard"><span class="nav-icon">▦</span><span id="dashboardNavLabel">Dashboard</span></button>
+    <button class="nav-btn staff-nav" data-page="clients"><span class="nav-icon">👥</span>Clientes</button>
+    <button class="nav-btn staff-nav" data-page="services"><span class="nav-icon">◆</span>Serviços</button>
+    <button class="nav-btn staff-nav" data-page="tasks"><span class="nav-icon">✓</span>Tarefas</button>
+    <button class="nav-btn staff-nav" data-page="creatives"><span class="nav-icon">◫</span>Criativos</button>
+    <button class="nav-btn admin-nav" data-page="reports"><span class="nav-icon">↗</span>Financeiro & Relatórios</button>
+    <button class="nav-btn client-nav" data-page="clientportal"><span class="nav-icon">◎</span>Meus Serviços</button>
+    <div class="nav-title admin-nav">Administração</div>
+    <button class="nav-btn admin-nav" data-page="settings"><span class="nav-icon">⚙</span>Configurações</button>
+    <a class="nav-btn" href="index.html"><span class="nav-icon">⌂</span>Voltar ao Site</a>
+    <button class="nav-btn logout" id="logoutBtn"><span class="nav-icon">⇥</span>Sair</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:11px"><button class="mobile-menu" id="mobileMenu">☰</button><div class="page-title"><b id="pageTitle">Dashboard</b><span id="pageSubtitle">HS Start Digital | HN Marketing</span></div></div>
+      <div class="top-actions"><span class="role-pill" id="rolePill">Perfil</span><button class="notif" id="notifBtn">🔔 <span id="notifCount">0</span></button></div>
+    </header>
+
+    <section class="content">
+      <div class="page" id="page-dashboard">
+        <div class="hero"><div class="kicker">HS START DIGITAL × HN MARKETING</div><h1 id="dashHeroTitle">CENTRAL DE <span>GESTÃO</span> DA AGÊNCIA</h1><p id="dashHeroText">Visão administrativa de clientes, operação, contratos, caixa e execução.</p></div>
+        <div id="adminDashboard" class="admin-only">
+          <div class="grid4">
+            <div class="metric"><div class="label">Contratos ativos / mês</div><div class="value" id="admMRR">R$ 0</div><div class="sub">Receita contratada mensal</div></div>
+            <div class="metric"><div class="label">Recebido no mês</div><div class="value" id="admPaid">R$ 0</div><div class="sub">Pagamentos registrados</div></div>
+            <div class="metric"><div class="label">Utilizado em serviços</div><div class="value" id="admUsed">R$ 0</div><div class="sub">Execuções no mês vigente</div></div>
+            <div class="metric"><div class="label">Caixa disponível</div><div class="value" id="admAvailable">R$ 0</div><div class="sub">Saldo reservado para execução</div></div>
+          </div>
+          <div class="section-grid">
+            <div class="card"><div class="card-head"><div><h3>Fluxo financeiro — últimos 7 dias</h3><p>Entradas e utilização registradas</p></div><span class="badge">Administrador</span></div><div class="chartbox"><canvas id="financeChart"></canvas></div></div>
+            <div class="card"><div class="card-head"><div><h3>Alertas de gestão</h3><p>Contratos, caixa e tarefas</p></div><span class="badge orange" id="admAlertBadge">0</span></div><div class="list" id="adminAlerts"></div></div>
+          </div>
+        </div>
+        <div id="employeeDashboard" class="employee-only">
+          <div class="grid4">
+            <div class="metric"><div class="label">Clientes ativos</div><div class="value" id="empClients">0</div><div class="sub">Carteira em atendimento</div></div>
+            <div class="metric"><div class="label">Serviços em execução</div><div class="value" id="empServices">0</div><div class="sub">Trabalhos ativos</div></div>
+            <div class="metric"><div class="label">Tarefas pendentes</div><div class="value" id="empTasks">0</div><div class="sub">A fazer + em andamento</div></div>
+            <div class="metric"><div class="label">Prazos críticos</div><div class="value" id="empDeadlines">0</div><div class="sub">Vencidos ou até 2 dias</div></div>
+          </div>
+          <div class="section-grid">
+            <div class="card"><div class="card-head"><div><h3>Prioridades de trabalho</h3><p>Sem exibição de valores e custos</p></div></div><div class="list" id="employeeTasks"></div></div>
+            <div class="card"><div class="card-head"><div><h3>Clientes em andamento</h3><p>Status operacional</p></div></div><div class="list" id="employeeClients"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="page-clients">
+        <div class="page-head"><div><h2>Clientes</h2><p>Cadastro e acompanhamento da carteira.</p></div><button class="btn btn-primary" onclick="openClientModal()">+ Novo Cliente</button></div>
+        <div class="toolbar"><input class="field grow" id="clientSearch" placeholder="Buscar empresa, nicho ou responsável..."><select class="field" id="clientStatusFilter"><option value="">Todos</option><option>Ativo</option><option>Prospecção</option><option>Pausado</option><option>Concluído</option></select></div>
+        <div class="table-wrap"><table><thead><tr><th>Empresa</th><th>Nicho</th><th>Status</th><th>Responsável</th><th>Vencimento</th><th class="admin-fin">Contrato</th><th>Ações</th></tr></thead><tbody id="clientsTable"></tbody></table></div>
+      </div>
+
+      <div class="page" id="page-services">
+        <div class="page-head"><div><h2>Serviços Contratados</h2><p>Entrega, andamento e execução por cliente.</p></div><button class="btn btn-primary" onclick="openServiceModal()">+ Novo Serviço</button></div>
+        <div class="service-grid" id="serviceGrid"></div>
+      </div>
+
+      <div class="page" id="page-tasks">
+        <div class="page-head"><div><h2>Tarefas</h2><p>Organização operacional em Kanban.</p></div><button class="btn btn-primary" onclick="openTaskModal()">+ Nova Tarefa</button></div>
+        <div class="kanban"><div class="kan-col"><div class="kan-title">A Fazer</div><div id="kanTodo"></div></div><div class="kan-col"><div class="kan-title">Em Andamento</div><div id="kanDoing"></div></div><div class="kan-col"><div class="kan-title">Concluído</div><div id="kanDone"></div></div></div>
+      </div>
+
+      <div class="page" id="page-creatives">
+        <div class="page-head"><div><h2>Criativos & Materiais</h2><p>Histórico do que está sendo produzido para cada cliente.</p></div><button class="btn btn-primary" onclick="openCreativeModal()">+ Novo Criativo</button></div>
+        <div class="creative-grid" id="creativeGrid"></div>
+      </div>
+
+      <div class="page" id="page-reports">
+        <div class="page-head"><div><h2>Financeiro & Relatórios</h2><p>Visível somente para Administradores.</p></div><button class="btn btn-primary" onclick="openEntryModal()">+ Lançamento</button></div>
+        <div class="grid4">
+          <div class="metric"><div class="label">Receita mensal contratada</div><div class="value" id="repMRR">R$ 0</div></div>
+          <div class="metric"><div class="label">Recebido mês vigente</div><div class="value" id="repPaid">R$ 0</div></div>
+          <div class="metric"><div class="label">Utilizado mês vigente</div><div class="value" id="repUsed">R$ 0</div></div>
+          <div class="metric"><div class="label">Saldo de execução</div><div class="value" id="repAvailable">R$ 0</div></div>
+        </div>
+        <div class="card"><div class="card-head"><div><h3>Resumo por cliente</h3><p>Contratos, pagamentos, caixa reservado e utilização.</p></div></div><div class="table-wrap"><table><thead><tr><th>Cliente</th><th>Contrato mensal</th><th>Pago no mês</th><th>Caixa execução</th><th>Utilizado</th><th>Disponível</th></tr></thead><tbody id="financeTable"></tbody></table></div></div>
+        <div class="card" style="margin-top:15px"><div class="card-head"><div><h3>Lançamentos financeiros</h3><p>Pagamentos e utilização de valores.</p></div></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Cliente</th><th>Tipo</th><th>Descrição</th><th>Valor</th><th>Ação</th></tr></thead><tbody id="entriesTable"></tbody></table></div></div>
+      </div>
+
+      <div class="page" id="page-clientportal">
+        <div class="hero client-hero"><div><div class="kicker">PORTAL DO CLIENTE</div><h1 id="clientPortalName">SEU PROJETO <span>EM TEMPO REAL</span></h1><p>Acompanhe os serviços contratados, pagamentos do mês e tudo que já foi utilizado na execução.</p></div><div class="status-ring" id="clientRing" style="--progress:0%"><b id="clientProgress">0%</b></div></div>
+        <div class="grid4">
+          <div class="metric"><div class="label">Valor contratado</div><div class="value" id="cliContract">R$ 0</div><div class="sub">Mensalidade / contrato vigente</div></div>
+          <div class="metric"><div class="label">Pago no mês</div><div class="value" id="cliPaid">R$ 0</div><div class="sub">Valores confirmados neste mês</div></div>
+          <div class="metric"><div class="label">Caixa para execução</div><div class="value" id="cliAvailable">R$ 0</div><div class="sub">Disponível para serviços</div></div>
+          <div class="metric"><div class="label">Já utilizado</div><div class="value" id="cliUsed">R$ 0</div><div class="sub">Detalhamento disponível abaixo</div></div>
+        </div>
+        <div class="card"><div class="card-head"><div><h3>Meus serviços</h3><p>Status e progresso de tudo que foi contratado.</p></div></div><div class="service-grid" id="clientServices"></div></div>
+        <div class="ledger-grid" style="margin-top:15px">
+          <div class="card"><div class="card-head"><div><h3>Valores pagos no mês</h3><p>Pagamentos confirmados</p></div></div><div class="table-wrap"><table style="min-width:540px"><thead><tr><th>Data</th><th>Descrição</th><th>Valor</th></tr></thead><tbody id="clientPayments"></tbody></table></div></div>
+          <div class="card"><div class="card-head"><div><h3>Detalhamento do utilizado</h3><p>Onde o caixa foi aplicado</p></div></div><div class="table-wrap"><table style="min-width:540px"><thead><tr><th>Data</th><th>Descrição</th><th>Valor</th></tr></thead><tbody id="clientUsage"></tbody></table></div></div>
+        </div>
+      </div>
+
+      <div class="page" id="page-settings">
+        <div class="page-head"><div><h2>Configurações</h2><p>Controle administrativo do sistema e do site.</p></div></div>
+        <div class="settings-tabs"><button class="settings-tab active" data-settings="users">Logins & Permissões</button><button class="settings-tab" data-settings="system">Sistema</button><button class="settings-tab" data-settings="site">Site</button><button class="settings-tab" data-settings="backup">Backup</button></div>
+        <div class="settings-panel active" id="settings-users">
+          <div class="section-grid">
+            <div class="card">
+              <div class="card-head"><div><h3>Perfis de acesso</h3><p>Regras aplicadas no painel.</p></div></div>
+              <div class="role-rule"><b>Administrador</b><span>Acesso total: clientes, valores, custos, caixa, pagamentos, gráficos financeiros, relatórios, usuários, configurações do sistema e parâmetros do site.</span></div>
+              <div class="role-rule"><b>Funcionário</b><span>Acesso a cadastro e execução: clientes, serviços, tarefas e criativos. Não visualiza contrato, pagamentos, caixa, custos, relatórios financeiros ou configurações administrativas.</span></div>
+              <div class="role-rule"><b>Cliente</b><span>Acesso somente ao próprio cadastro: serviços contratados, valor contratado, pagamentos do mês, caixa disponível, utilização detalhada e progresso das entregas.</span></div>
+              <div class="notice">Importante: esta versão foi preparada para GitHub Pages e usa login local para demonstração. Para segurança real e acesso de vários dispositivos/clientes, publique o mesmo front-end com Firebase Authentication + Firestore.</div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div><h3>Novo login</h3><p>Crie acessos para equipe ou cliente.</p></div></div>
+              <form id="userForm">
+                <div class="form-grid">
+                  <div class="form-group"><label>Nome</label><input class="field" id="uName" required></div>
+                  <div class="form-group"><label>Usuário</label><input class="field" id="uUsername" required></div>
+                  <div class="form-group"><label>E-mail</label><input class="field" id="uEmail" type="email"></div>
+                  <div class="form-group"><label>Senha</label><input class="field" id="uPassword" required></div>
+                  <div class="form-group"><label>Perfil</label><select class="field" id="uRole"><option>Administrador</option><option>Funcionário</option><option>Cliente</option></select></div>
+                  <div class="form-group"><label>Cliente vinculado</label><select class="field" id="uClient"></select></div>
+                </div>
+                <button class="btn btn-primary">Criar login</button>
+              </form>
+            </div>
+          </div>
+          <div class="card" style="margin-top:15px"><div class="card-head"><div><h3>Usuários cadastrados</h3><p>Administrador pode remover acessos.</p></div></div><div class="table-wrap"><table><thead><tr><th>Nome</th><th>Usuário</th><th>Perfil</th><th>Cliente vinculado</th><th>Ação</th></tr></thead><tbody id="usersTable"></tbody></table></div></div>
+        </div>
+        <div class="settings-panel" id="settings-system">
+          <div class="card"><div class="card-head"><div><h3>Parâmetros do sistema</h3><p>Identidade interna e operação.</p></div></div>
+            <div class="form-grid">
+              <div class="form-group"><label>Nome da plataforma</label><input class="field" id="cfgSystemName" value="Sistema de Clientes HS + HN"></div>
+              <div class="form-group"><label>Administrador principal</label><input class="field" id="cfgAdminName" value="Henrique"></div>
+              <div class="form-group"><label>Alerta de vencimento (dias)</label><input class="field" id="cfgAlertDays" type="number" value="3"></div>
+              <div class="form-group"><label>Moeda</label><select class="field" id="cfgCurrency"><option value="BRL">BRL — Real</option></select></div>
+            </div>
+            <button class="btn btn-primary" onclick="saveSystemSettings()">Salvar configurações</button>
+          </div>
+        </div>
+        <div class="settings-panel" id="settings-site">
+          <div class="card"><div class="card-head"><div><h3>Configurações do site</h3><p>Aplicadas ao index.html quando aberto no mesmo domínio/navegador.</p></div></div>
+            <div class="form-grid">
+              <div class="form-group"><label>Nome da empresa</label><input class="field" id="siteCompany" value="HS START DIGITAL × HN MARKETING"></div>
+              <div class="form-group"><label>WhatsApp HS</label><input class="field" id="siteWhatsappHS" value="5513982105058"></div>
+              <div class="form-group"><label>WhatsApp HN</label><input class="field" id="siteWhatsappHN" value="5513991802942"></div>
+              <div class="form-group"><label>Texto botão orçamento</label><input class="field" id="siteQuoteLabel" value="PEDIR ORÇAMENTO"></div>
+              <div class="form-group"><label>Texto botão sistema</label><input class="field" id="siteClientLabel" value="SISTEMA DE CLIENTES"></div>
+              <div class="form-group"><label>Texto rodapé</label><input class="field" id="siteFooter" value="Tecnologia que desenvolve. Criação que dá identidade."></div>
+            </div>
+            <button class="btn btn-primary" onclick="saveSiteSettings()">Salvar configurações do site</button>
+            <div class="notice" style="margin-top:12px">No GitHub Pages sem banco online, as alterações de configuração ficam neste navegador. Para que todos os visitantes vejam as mudanças, conecte o sistema ao Firebase/Firestore ou altere o index.html no repositório.</div>
+          </div>
+        </div>
+        <div class="settings-panel" id="settings-backup">
+          <div class="card"><div class="card-head"><div><h3>Backup & restauração</h3><p>Exporte os dados do painel antes de alterações importantes.</p></div></div>
+            <div style="display:flex;gap:9px;flex-wrap:wrap"><button class="btn btn-light" onclick="exportBackup()">Exportar JSON</button><label class="btn btn-dark" style="display:inline-flex;align-items:center">Importar JSON<input type="file" id="importBackup" accept=".json" hidden></label><button class="btn btn-danger" onclick="resetDemo()">Restaurar demonstração</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- MODAL CLIENTE -->
+<div class="modal" id="clientModal"><div class="modal-card"><div class="modal-head"><h3 id="clientModalTitle">Novo Cliente</h3><button class="close" onclick="closeModal('clientModal')">✕</button></div><div class="modal-body"><form id="clientForm"><input type="hidden" id="cId"><div class="form-grid">
+<div class="form-group"><label>Empresa</label><input class="field" id="cCompany" required></div><div class="form-group"><label>Nicho</label><input class="field" id="cNiche" required></div>
+<div class="form-group"><label>Status</label><select class="field" id="cStatus"><option>Ativo</option><option>Prospecção</option><option>Pausado</option><option>Concluído</option></select></div><div class="form-group"><label>Responsável</label><input class="field" id="cManager"></div>
+<div class="form-group"><label>Vencimento</label><input class="field" id="cEnd" type="date"></div><div class="form-group"><label>Contato</label><input class="field" id="cContact"></div>
+<div class="form-group admin-fin-field"><label>Valor contratado / mês</label><input class="field" id="cContract" type="number" min="0" step=".01"></div><div class="form-group admin-fin-field"><label>Caixa reservado para execução</label><input class="field" id="cExecutionCash" type="number" min="0" step=".01"></div>
+</div><div class="form-group"><label>Observações estratégicas</label><textarea class="field" id="cNote"></textarea></div><div style="display:flex;justify-content:flex-end;gap:8px"><button type="button" class="btn btn-light" onclick="closeModal('clientModal')">Cancelar</button><button class="btn btn-primary">Salvar</button></div></form></div></div></div>
+
+<!-- MODAL SERVIÇO -->
+<div class="modal" id="serviceModal"><div class="modal-card"><div class="modal-head"><h3>Novo / Editar Serviço</h3><button class="close" onclick="closeModal('serviceModal')">✕</button></div><div class="modal-body"><form id="serviceForm"><input type="hidden" id="sId"><div class="form-grid">
+<div class="form-group"><label>Cliente</label><select class="field" id="sClient"></select></div><div class="form-group"><label>Serviço</label><input class="field" id="sName" placeholder="Site, Sistema, Impressão..." required></div>
+<div class="form-group"><label>Status</label><select class="field" id="sStatus"><option>Planejamento</option><option>Em execução</option><option>Aguardando cliente</option><option>Concluído</option></select></div><div class="form-group"><label>Progresso (%)</label><input class="field" id="sProgress" type="number" min="0" max="100" value="0"></div>
+<div class="form-group"><label>Responsável</label><input class="field" id="sAssigned"></div><div class="form-group"><label>Prazo</label><input class="field" id="sDue" type="date"></div>
+<div class="form-group admin-fin-field"><label>Valor contratado do serviço</label><input class="field" id="sContractValue" type="number" min="0" step=".01"></div><div class="form-group admin-fin-field"><label>Caixa previsto para execução</label><input class="field" id="sBudget" type="number" min="0" step=".01"></div>
+</div><div class="form-group"><label>Detalhes da entrega</label><textarea class="field" id="sDetails"></textarea></div><div style="display:flex;justify-content:flex-end;gap:8px"><button type="button" class="btn btn-light" onclick="closeModal('serviceModal')">Cancelar</button><button class="btn btn-primary">Salvar serviço</button></div></form></div></div></div>
+
+<!-- MODAL TAREFA -->
+<div class="modal" id="taskModal"><div class="modal-card" style="max-width:650px"><div class="modal-head"><h3>Nova Tarefa</h3><button class="close" onclick="closeModal('taskModal')">✕</button></div><div class="modal-body"><form id="taskForm"><div class="form-grid">
+<div class="form-group"><label>Título</label><input class="field" id="tTitle" required></div><div class="form-group"><label>Cliente</label><select class="field" id="tClient"></select></div>
+<div class="form-group"><label>Status</label><select class="field" id="tStatus"><option>A Fazer</option><option>Em Andamento</option><option>Concluído</option></select></div><div class="form-group"><label>Prioridade</label><select class="field" id="tPriority"><option>Baixa</option><option>Média</option><option>Alta</option><option>Urgente</option></select></div>
+<div class="form-group"><label>Prazo</label><input class="field" id="tDue" type="date"></div><div class="form-group"><label>Responsável</label><input class="field" id="tAssigned"></div>
+</div><button class="btn btn-primary">Criar tarefa</button></form></div></div></div>
+
+<!-- MODAL CRIATIVO -->
+<div class="modal" id="creativeModal"><div class="modal-card" style="max-width:680px"><div class="modal-head"><h3>Novo Criativo</h3><button class="close" onclick="closeModal('creativeModal')">✕</button></div><div class="modal-body"><form id="creativeForm"><div class="form-grid">
+<div class="form-group"><label>Nome</label><input class="field" id="crName" required></div><div class="form-group"><label>Cliente</label><select class="field" id="crClient"></select></div>
+<div class="form-group"><label>Formato</label><select class="field" id="crFormat"><option>Imagem</option><option>Vídeo</option><option>Carrossel</option><option>Flyer</option><option>Site</option></select></div><div class="form-group"><label>Status</label><select class="field" id="crStatus"><option>Em criação</option><option>Aguardando aprovação</option><option>Aprovado</option></select></div>
+</div><div class="form-group"><label>Descrição / Copy</label><textarea class="field" id="crText"></textarea></div><button class="btn btn-primary">Salvar criativo</button></form></div></div></div>
+
+<!-- MODAL LANÇAMENTO -->
+<div class="modal" id="entryModal"><div class="modal-card" style="max-width:680px"><div class="modal-head"><h3>Novo Lançamento</h3><button class="close" onclick="closeModal('entryModal')">✕</button></div><div class="modal-body"><form id="entryForm"><div class="form-grid">
+<div class="form-group"><label>Cliente</label><select class="field" id="eClient"></select></div><div class="form-group"><label>Tipo</label><select class="field" id="eType"><option>Pagamento</option><option>Utilização</option></select></div>
+<div class="form-group"><label>Data</label><input class="field" id="eDate" type="date" required></div><div class="form-group"><label>Valor</label><input class="field" id="eAmount" type="number" min="0" step=".01" required></div>
+</div><div class="form-group"><label>Descrição</label><input class="field" id="eDescription" required></div><button class="btn btn-primary">Registrar</button></form></div></div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const DB_KEY='hshn_portal_db_v3', SESSION_KEY='hshn_portal_session_v3', SHARED_KEY='hshn_shared_settings_v1';
+const now=new Date(), pad=n=>String(n).padStart(2,'0'), iso=(d=now)=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+function addDays(n){const d=new Date();d.setDate(d.getDate()+n);return iso(d)}
+function monthKey(dateStr){const d=dateStr?new Date(dateStr+'T12:00:00'):new Date();return `${d.getFullYear()}-${pad(d.getMonth()+1)}`}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function money(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function daysUntil(s){if(!s)return 999;const a=new Date();a.setHours(0,0,0,0);const b=new Date(s+'T00:00:00');return Math.ceil((b-a)/86400000)}
+const currentMonth=monthKey();
+
+const DEMO={
+ users:[
+  {id:'u1',name:'Henrique',username:'admin',email:'admin@hshn.com.br',password:'admin123',role:'Administrador',clientId:null,active:true},
+  {id:'u2',name:'Equipe HS HN',username:'funcionario',email:'equipe@hshn.com.br',password:'func123',role:'Funcionário',clientId:null,active:true},
+  {id:'u3',name:'Cliente Demonstração',username:'cliente',email:'cliente@exemplo.com',password:'cliente123',role:'Cliente',clientId:'c1',active:true}
+ ],
+ clients:[
+  {id:'c1',company:'Clínica Sorriso',niche:'Saúde',status:'Ativo',manager:'Henrique',end:addDays(10),contact:'contato@clinicasorriso.com',contract:2400,executionCash:1200,note:'Campanha e materiais digitais do mês.'},
+  {id:'c2',company:'Moda Prime',niche:'E-commerce',status:'Ativo',manager:'Equipe HS HN',end:addDays(19),contact:'marketing@modaprime.com',contract:3200,executionCash:1800,note:'Site, criativos e acompanhamento digital.'},
+  {id:'c3',company:'Bella Casa',niche:'Comércio Local',status:'Ativo',manager:'Henrique',end:addDays(2),contact:'contato@bellacasa.com',contract:1800,executionCash:900,note:'Materiais promocionais e presença digital.'}
+ ],
+ services:[
+  {id:'s1',clientId:'c1',name:'Gestão de Criativos',status:'Em execução',progress:62,assigned:'Henrique',due:addDays(8),contractValue:900,budget:520,details:'Criação de peças e variações para campanhas.'},
+  {id:'s2',clientId:'c1',name:'Landing Page',status:'Em execução',progress:78,assigned:'Equipe HS HN',due:addDays(5),contractValue:1500,budget:680,details:'Página de captação com WhatsApp e formulário.'},
+  {id:'s3',clientId:'c2',name:'Loja Virtual',status:'Em execução',progress:44,assigned:'Equipe HS HN',due:addDays(15),contractValue:2500,budget:1200,details:'Estrutura de catálogo e fluxo de vendas.'},
+  {id:'s4',clientId:'c2',name:'Pacote de Criativos',status:'Aguardando cliente',progress:70,assigned:'Henrique',due:addDays(7),contractValue:700,budget:600,details:'Aguardando aprovação das peças.'},
+  {id:'s5',clientId:'c3',name:'Flyers Promocionais',status:'Em execução',progress:85,assigned:'HN Marketing',due:addDays(2),contractValue:800,budget:500,details:'Criação e preparação para impressão.'}
+ ],
+ tasks:[
+  {id:'t1',title:'Instalar Pixel/API',clientId:'c1',status:'A Fazer',priority:'Alta',due:addDays(0),assigned:'Henrique'},
+  {id:'t2',title:'Revisar landing page',clientId:'c1',status:'Em Andamento',priority:'Alta',due:addDays(1),assigned:'Equipe HS HN'},
+  {id:'t3',title:'Enviar prévia do catálogo',clientId:'c2',status:'Em Andamento',priority:'Média',due:addDays(3),assigned:'Equipe HS HN'},
+  {id:'t4',title:'Finalizar flyer',clientId:'c3',status:'A Fazer',priority:'Urgente',due:addDays(-1),assigned:'HN Marketing'}
+ ],
+ creatives:[
+  {id:'r1',clientId:'c1',name:'Campanha Setembro',format:'Carrossel',status:'Aprovado',text:'Peças focadas em chamada para avaliação.'},
+  {id:'r2',clientId:'c2',name:'Coleção Nova',format:'Vídeo',status:'Em criação',text:'Vídeo vertical de apresentação da coleção.'}
+ ],
+ entries:[
+  {id:'e1',clientId:'c1',type:'Pagamento',date:iso(),description:'Mensalidade do mês vigente',amount:2400},
+  {id:'e2',clientId:'c1',type:'Utilização',date:iso(),description:'Produção de criativos e ajustes',amount:280},
+  {id:'e3',clientId:'c1',type:'Utilização',date:addDays(-2),description:'Estrutura e publicação de landing page',amount:400},
+  {id:'e4',clientId:'c2',type:'Pagamento',date:addDays(-3),description:'Mensalidade do mês vigente',amount:3200},
+  {id:'e5',clientId:'c2',type:'Utilização',date:addDays(-1),description:'Produção inicial da loja virtual',amount:620},
+  {id:'e6',clientId:'c3',type:'Pagamento',date:addDays(-4),description:'Mensalidade do mês vigente',amount:1800},
+  {id:'e7',clientId:'c3',type:'Utilização',date:addDays(-2),description:'Criação e preparação dos flyers',amount:350}
+ ],
+ systemSettings:{systemName:'Sistema de Clientes HS + HN',adminName:'Henrique',alertDays:3,currency:'BRL'}
+};
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function loadDB(){try{const d=JSON.parse(localStorage.getItem(DB_KEY));return d&&d.users?d:clone(DEMO)}catch(e){return clone(DEMO)}}
+let db=loadDB(), currentUser=null;
+function saveDB(){localStorage.setItem(DB_KEY,JSON.stringify(db));renderAll()}
+function clientById(id){return db.clients.find(c=>c.id===id)}
+function paymentTotal(clientId){return db.entries.filter(e=>e.clientId===clientId&&e.type==='Pagamento'&&monthKey(e.date)===currentMonth).reduce((s,e)=>s+Number(e.amount||0),0)}
+function usedTotal(clientId){return db.entries.filter(e=>e.clientId===clientId&&e.type==='Utilização'&&monthKey(e.date)===currentMonth).reduce((s,e)=>s+Number(e.amount||0),0)}
+function availableCash(c){return Math.max(0,Number(c.executionCash||0)-usedTotal(c.id))}
+function isAdmin(){return currentUser?.role==='Administrador'} function isEmployee(){return currentUser?.role==='Funcionário'} function isClient(){return currentUser?.role==='Cliente'}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')}))
+
+function login(user,pass){
+ const found=db.users.find(u=>u.active!==false&&(u.username.toLowerCase()===user.toLowerCase()||String(u.email||'').toLowerCase()===user.toLowerCase())&&u.password===pass);
+ if(!found)return false;currentUser=found;localStorage.setItem(SESSION_KEY,found.id);enterApp();return true
+}
+document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();loginError.textContent='';if(!login(loginUser.value.trim(),loginPass.value)){loginError.textContent='Usuário ou senha inválidos.'}})
+document.getElementById('logoutBtn').onclick=()=>{localStorage.removeItem(SESSION_KEY);currentUser=null;document.getElementById('app').style.display='none';document.getElementById('loginScreen').style.display='grid';loginPass.value='';loginError.textContent=''}
+function restoreSession(){const id=localStorage.getItem(SESSION_KEY);const u=db.users.find(x=>x.id===id&&x.active!==false);if(u){currentUser=u;enterApp()}}
+
+function enterApp(){
+ loginScreen.style.display='none';app.style.display='grid';userName.textContent=currentUser.name;userRole.textContent=currentUser.role;rolePill.textContent=currentUser.role;avatar.textContent=currentUser.name.split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase();
+ document.querySelectorAll('.admin-nav').forEach(x=>x.classList.toggle('hidden',!isAdmin()));
+ document.querySelectorAll('.staff-nav').forEach(x=>x.classList.toggle('hidden',isClient()));
+ document.querySelectorAll('.client-nav').forEach(x=>x.classList.toggle('hidden',!isClient()));
+ document.querySelectorAll('.admin-only').forEach(x=>x.classList.toggle('hidden',!isAdmin()));
+ document.querySelectorAll('.employee-only').forEach(x=>x.classList.toggle('hidden',!isEmployee()));
+ document.querySelectorAll('.admin-fin').forEach(x=>x.classList.toggle('hidden',!isAdmin()));
+ dashboardNavLabel.textContent=isClient()?'Meu Painel':'Dashboard';
+ applyFinancialVisibility();renderAll();goPage(isClient()?'clientportal':'dashboard');
+}
+function applyFinancialVisibility(){document.querySelectorAll('.admin-fin-field').forEach(el=>el.classList.toggle('hidden',!isAdmin()))}
+
+function goPage(name){
+ if(name==='reports'&&!isAdmin())return;if(name==='settings'&&!isAdmin())return;if(name==='clientportal'&&!isClient())return;
+ if(['clients','services','tasks','creatives'].includes(name)&&isClient())return;
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+name)?.classList.add('active');
+ document.querySelectorAll('.nav-btn[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+ const titles={dashboard:'Dashboard',clients:'Clientes',services:'Serviços',tasks:'Tarefas',creatives:'Criativos',reports:'Financeiro & Relatórios',clientportal:'Portal do Cliente',settings:'Configurações'};
+ pageTitle.textContent=titles[name]||'Sistema';sidebar.classList.remove('open');if(name==='dashboard'&&isAdmin())setTimeout(drawFinanceChart,40)
+}
+document.querySelectorAll('.nav-btn[data-page]').forEach(b=>b.onclick=()=>goPage(b.dataset.page));mobileMenu.onclick=()=>sidebar.classList.toggle('open');
+
+function renderAll(){
+ if(!currentUser)return;
+ populateSelects();renderDashboard();renderClients();renderServices();renderTasks();renderCreatives();renderReports();renderClientPortal();renderUsers();renderSettings();renderAlerts();applyFinancialVisibility();
+}
+function renderDashboard(){
+ const active=db.clients.filter(c=>c.status==='Ativo');
+ if(isAdmin()){
+  const mrr=active.reduce((s,c)=>s+Number(c.contract||0),0),paid=db.entries.filter(e=>e.type==='Pagamento'&&monthKey(e.date)===currentMonth).reduce((s,e)=>s+Number(e.amount||0),0),used=db.entries.filter(e=>e.type==='Utilização'&&monthKey(e.date)===currentMonth).reduce((s,e)=>s+Number(e.amount||0),0),avail=active.reduce((s,c)=>s+availableCash(c),0);
+  admMRR.textContent=money(mrr);admPaid.textContent=money(paid);admUsed.textContent=money(used);admAvailable.textContent=money(avail);
+  dashHeroTitle.innerHTML='CENTRAL DE <span>GESTÃO</span> DA AGÊNCIA';dashHeroText.textContent='Visão administrativa de clientes, contratos, caixa, pagamentos, custos e execução.';
+  const alerts=buildAlerts();admAlertBadge.textContent=alerts.length+' alerta(s)';adminAlerts.innerHTML=alerts.slice(0,6).map(a=>`<div class="list-item"><span class="dot ${a.kind}"></span><div class="list-main"><b>${esc(a.title)}</b><span>${esc(a.text)}</span></div></div>`).join('')||'<div class="empty">Sem alertas críticos.</div>';
+  setTimeout(drawFinanceChart,50);
+ } else if(isEmployee()){
+  dashHeroTitle.innerHTML='CENTRAL DE <span>OPERAÇÃO</span> DA EQUIPE';dashHeroText.textContent='Cadastros, tarefas, serviços e entregas sem exposição de valores, custos ou caixa.';
+  empClients.textContent=active.length;empServices.textContent=db.services.filter(s=>s.status!=='Concluído').length;empTasks.textContent=db.tasks.filter(t=>t.status!=='Concluído').length;empDeadlines.textContent=db.tasks.filter(t=>t.status!=='Concluído'&&daysUntil(t.due)<=2).length;
+  employeeTasks.innerHTML=db.tasks.filter(t=>t.status!=='Concluído').sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999')).slice(0,6).map(t=>`<div class="list-item"><span class="dot ${t.priority==='Urgente'?'red':t.priority==='Alta'?'orange':''}"></span><div class="list-main"><b>${esc(t.title)}</b><span>${esc(clientById(t.clientId)?.company||'Sem cliente')} · ${esc(t.status)} · ${esc(t.assigned)}</span></div></div>`).join('');
+  employeeClients.innerHTML=active.slice(0,6).map(c=>`<div class="list-item"><span class="dot"></span><div class="list-main"><b>${esc(c.company)}</b><span>${esc(c.niche)} · responsável: ${esc(c.manager||'-')}</span></div></div>`).join('');
+ }
+}
+function buildAlerts(){
+ const days=Number(db.systemSettings?.alertDays||3),arr=[];
+ db.clients.filter(c=>c.status==='Ativo').forEach(c=>{const d=daysUntil(c.end);if(d<=days)arr.push({kind:d<0?'red':'orange',title:c.company,text:d<0?`Contrato vencido há ${Math.abs(d)} dia(s).`:`Contrato vence em ${d} dia(s).`});if(availableCash(c)<=Math.max(50,Number(c.executionCash||0)*.15))arr.push({kind:'orange',title:c.company,text:`Caixa de execução disponível: ${money(availableCash(c))}.`})});
+ db.tasks.filter(t=>t.status!=='Concluído'&&daysUntil(t.due)<0).forEach(t=>arr.push({kind:'red',title:t.title,text:`Tarefa atrasada · ${clientById(t.clientId)?.company||'Sem cliente'}`}));
+ return arr
+}
+function renderAlerts(){const n=isClient()?0:buildAlerts().length;notifCount.textContent=n}
+notifBtn.onclick=()=>toast(isClient()?'Seu painel está atualizado.':`${notifCount.textContent} alerta(s) de gestão.`)
+
+function drawFinanceChart(){
+ if(!isAdmin())return;const c=financeChart,rect=c.getBoundingClientRect();if(rect.width<10)return;const dpr=window.devicePixelRatio||1;c.width=rect.width*dpr;c.height=rect.height*dpr;const x=c.getContext('2d');x.scale(dpr,dpr);const w=rect.width,h=rect.height,p=34;
+ x.clearRect(0,0,w,h);x.strokeStyle='#dfeaf4';x.lineWidth=1;for(let i=0;i<5;i++){let y=p+i*(h-2*p)/4;x.beginPath();x.moveTo(p,y);x.lineTo(w-p,y);x.stroke()}
+ const days=[];for(let i=6;i>=0;i--){let d=new Date();d.setDate(d.getDate()-i);days.push(iso(d))}
+ const vals=days.map(d=>({in:db.entries.filter(e=>e.date===d&&e.type==='Pagamento').reduce((s,e)=>s+Number(e.amount),0),out:db.entries.filter(e=>e.date===d&&e.type==='Utilização').reduce((s,e)=>s+Number(e.amount),0)}));const max=Math.max(1,...vals.flatMap(v=>[v.in,v.out]))*1.15;
+ const draw=(key,color)=>{const pts=vals.map((v,i)=>[p+i*(w-2*p)/6,h-p-(v[key]/max)*(h-2*p)]);x.beginPath();pts.forEach((pt,i)=>i?x.lineTo(...pt):x.moveTo(...pt));x.strokeStyle=color;x.lineWidth=3;x.stroke();pts.forEach(pt=>{x.beginPath();x.arc(pt[0],pt[1],3.5,0,Math.PI*2);x.fillStyle=color;x.fill()})};draw('in','#087ce1');draw('out','#ff9b1c');x.fillStyle='#73869a';x.font='10px Arial';days.forEach((d,i)=>x.fillText(d.slice(8,10)+'/'+d.slice(5,7),p+i*(w-2*p)/6-10,h-9));
+}
+window.addEventListener('resize',()=>{if(isAdmin()&&document.getElementById('page-dashboard').classList.contains('active'))drawFinanceChart()})
+
+function renderClients(){
+ if(isClient())return;const q=(clientSearch.value||'').toLowerCase(),st=clientStatusFilter.value||'';const rows=db.clients.filter(c=>(!st||c.status===st)&&(`${c.company} ${c.niche} ${c.manager}`.toLowerCase().includes(q)));
+ clientsTable.innerHTML=rows.length?rows.map(c=>`<tr><td><button class="link" onclick="editClient('${c.id}')">${esc(c.company)}</button></td><td>${esc(c.niche)}</td><td><span class="badge ${c.status==='Ativo'?'green':c.status==='Pausado'?'orange':''}">${esc(c.status)}</span></td><td>${esc(c.manager||'-')}</td><td>${c.end?new Date(c.end+'T12:00:00').toLocaleDateString('pt-BR'):'-'}</td>${isAdmin()?`<td>${money(c.contract)}</td>`:''}<td><button class="small" onclick="editClient('${c.id}')">Editar</button> ${isAdmin()?`<button class="small" onclick="deleteClient('${c.id}')">Excluir</button>`:''}</td></tr>`).join(''):'<tr><td colspan="7" class="empty">Nenhum cliente encontrado.</td></tr>'
+}
+clientSearch.addEventListener('input',renderClients);clientStatusFilter.addEventListener('change',renderClients)
+function openClientModal(){clientForm.reset();cId.value='';cStatus.value='Ativo';cManager.value=currentUser.name;clientModalTitle.textContent='Novo Cliente';clientModal.classList.add('show');applyFinancialVisibility()}
+function editClient(id){const c=clientById(id);if(!c)return;cId.value=c.id;cCompany.value=c.company;cNiche.value=c.niche;cStatus.value=c.status;cManager.value=c.manager||'';cEnd.value=c.end||'';cContact.value=c.contact||'';cContract.value=c.contract||0;cExecutionCash.value=c.executionCash||0;cNote.value=c.note||'';clientModalTitle.textContent='Editar Cliente';clientModal.classList.add('show');applyFinancialVisibility()}
+clientForm.addEventListener('submit',e=>{e.preventDefault();const id=cId.value,old=id?clientById(id):null;const obj={id:id||uid(),company:cCompany.value.trim(),niche:cNiche.value.trim(),status:cStatus.value,manager:cManager.value.trim(),end:cEnd.value,contact:cContact.value.trim(),contract:isAdmin()?Number(cContract.value||0):Number(old?.contract||0),executionCash:isAdmin()?Number(cExecutionCash.value||0):Number(old?.executionCash||0),note:cNote.value.trim()};if(id){db.clients[db.clients.findIndex(x=>x.id===id)]=obj}else{db.clients.push(obj);db.tasks.push({id:uid(),title:'Instalar Pixel/API',clientId:obj.id,status:'A Fazer',priority:'Alta',due:iso(),assigned:obj.manager||currentUser.name})}closeModal('clientModal');saveDB();toast(id?'Cliente atualizado.':'Cliente criado + tarefa Instalar Pixel/API gerada.')})
+function deleteClient(id){if(!isAdmin()||!confirm('Excluir cliente e dados relacionados?'))return;db.clients=db.clients.filter(c=>c.id!==id);db.services=db.services.filter(s=>s.clientId!==id);db.tasks=db.tasks.filter(t=>t.clientId!==id);db.creatives=db.creatives.filter(r=>r.clientId!==id);db.entries=db.entries.filter(e=>e.clientId!==id);db.users.forEach(u=>{if(u.clientId===id)u.clientId=null});saveDB()}
+
+function populateSelects(){const opts=db.clients.map(c=>`<option value="${c.id}">${esc(c.company)}</option>`).join('');['sClient','tClient','crClient','eClient','uClient'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=(id==='uClient'?'<option value="">Sem vínculo</option>':'')+opts})}
+function renderServices(){
+ if(isClient())return;serviceGrid.innerHTML=db.services.length?db.services.map(s=>`<div class="service-card"><div class="service-top"><span class="badge">${esc(s.status)}</span><h3>${esc(s.name)}</h3><p>${esc(clientById(s.clientId)?.company||'Sem cliente')}</p></div><div class="service-body"><div class="progress"><i style="width:${Math.max(0,Math.min(100,Number(s.progress||0)))}%"></i></div><div style="display:flex;justify-content:space-between;margin-top:5px;font-size:10px;color:#6e8194"><span>Progresso</span><b>${Number(s.progress||0)}%</b></div><div class="service-meta"><div class="mini-stat"><b>${esc(s.assigned||'-')}</b><span>Responsável</span></div><div class="mini-stat"><b>${s.due?new Date(s.due+'T12:00:00').toLocaleDateString('pt-BR'):'-'}</b><span>Prazo</span></div>${isAdmin()?`<div class="mini-stat"><b>${money(s.contractValue)}</b><span>Valor serviço</span></div><div class="mini-stat"><b>${money(s.budget)}</b><span>Caixa previsto</span></div>`:''}</div><p style="font-size:11px;color:#6b7c8e;line-height:1.5">${esc(s.details||'')}</p><button class="small" onclick="editService('${s.id}')">Editar</button> ${isAdmin()?`<button class="small" onclick="deleteService('${s.id}')">Excluir</button>`:''}</div></div>`).join(''):'<div class="empty">Nenhum serviço cadastrado.</div>'
+}
+function openServiceModal(){serviceForm.reset();sId.value='';sStatus.value='Planejamento';sProgress.value=0;sAssigned.value=currentUser.name;populateSelects();serviceModal.classList.add('show');applyFinancialVisibility()}
+function editService(id){const s=db.services.find(x=>x.id===id);if(!s)return;sId.value=s.id;sClient.value=s.clientId;sName.value=s.name;sStatus.value=s.status;sProgress.value=s.progress;sAssigned.value=s.assigned||'';sDue.value=s.due||'';sContractValue.value=s.contractValue||0;sBudget.value=s.budget||0;sDetails.value=s.details||'';serviceModal.classList.add('show');applyFinancialVisibility()}
+serviceForm.addEventListener('submit',e=>{e.preventDefault();const id=sId.value,old=id?db.services.find(s=>s.id===id):null;const obj={id:id||uid(),clientId:sClient.value,name:sName.value.trim(),status:sStatus.value,progress:Number(sProgress.value||0),assigned:sAssigned.value.trim(),due:sDue.value,contractValue:isAdmin()?Number(sContractValue.value||0):Number(old?.contractValue||0),budget:isAdmin()?Number(sBudget.value||0):Number(old?.budget||0),details:sDetails.value.trim()};if(id)db.services[db.services.findIndex(s=>s.id===id)]=obj;else db.services.push(obj);closeModal('serviceModal');saveDB();toast('Serviço salvo.')})
+function deleteService(id){if(!isAdmin()||!confirm('Excluir este serviço?'))return;db.services=db.services.filter(s=>s.id!==id);saveDB()}
+
+function renderTasks(){if(isClient())return;const groups={'A Fazer':'kanTodo','Em Andamento':'kanDoing','Concluído':'kanDone'};Object.entries(groups).forEach(([status,id])=>{const arr=db.tasks.filter(t=>t.status===status);document.getElementById(id).innerHTML=arr.length?arr.map(t=>`<div class="task-card"><h4>${esc(t.title)}</h4><p>${esc(clientById(t.clientId)?.company||'Sem cliente')}</p><div class="task-meta"><span>${esc(t.priority)}</span><span>${t.due?new Date(t.due+'T12:00:00').toLocaleDateString('pt-BR'):'-'}</span></div><div style="display:flex;gap:5px;margin-top:8px"><button class="small" onclick="advanceTask('${t.id}')">Avançar</button><button class="small" onclick="deleteTask('${t.id}')">Excluir</button></div></div>`).join(''):'<div class="empty">Sem tarefas.</div>'})}
+function openTaskModal(){taskForm.reset();populateSelects();tStatus.value='A Fazer';tPriority.value='Média';tAssigned.value=currentUser.name;taskModal.classList.add('show')}
+taskForm.addEventListener('submit',e=>{e.preventDefault();db.tasks.push({id:uid(),title:tTitle.value.trim(),clientId:tClient.value,status:tStatus.value,priority:tPriority.value,due:tDue.value,assigned:tAssigned.value.trim()});closeModal('taskModal');saveDB();toast('Tarefa criada.')})
+function advanceTask(id){const t=db.tasks.find(x=>x.id===id);if(!t)return;t.status=t.status==='A Fazer'?'Em Andamento':t.status==='Em Andamento'?'Concluído':'Concluído';saveDB()}
+function deleteTask(id){db.tasks=db.tasks.filter(t=>t.id!==id);saveDB()}
+
+function renderCreatives(){if(isClient())return;creativeGrid.innerHTML=db.creatives.length?db.creatives.map(r=>`<div class="creative-card"><div class="creative-cover">${r.format==='Vídeo'?'▶':r.format==='Site'?'⌘':'✦'}</div><div class="creative-body"><span class="badge">${esc(r.status)}</span><h4>${esc(r.name)}</h4><p><b>${esc(clientById(r.clientId)?.company||'Sem cliente')}</b> · ${esc(r.format)}</p><p style="margin-top:8px">${esc(r.text||'')}</p><button class="small" style="margin-top:9px" onclick="deleteCreative('${r.id}')">Excluir</button></div></div>`).join(''):'<div class="empty">Nenhum criativo cadastrado.</div>'}
+function openCreativeModal(){creativeForm.reset();populateSelects();creativeModal.classList.add('show')}
+creativeForm.addEventListener('submit',e=>{e.preventDefault();db.creatives.push({id:uid(),clientId:crClient.value,name:crName.value.trim(),format:crFormat.value,status:crStatus.value,text:crText.value.trim()});closeModal('creativeModal');saveDB();toast('Criativo salvo.')})
+function deleteCreative(id){db.creatives=db.creatives.filter(r=>r.id!==id);saveDB()}
+
+function renderReports(){if(!isAdmin())return;const active=db.clients.filter(c=>c.status==='Ativo'),mrr=active.reduce((s,c)=>s+Number(c.contract||0),0),paid=db.entries.filter(e=>e.type==='Pagamento'&&monthKey(e.date)===currentMonth).reduce((s,e)=>s+Number(e.amount||0),0),used=db.entries.filter(e=>e.type==='Utilização'&&monthKey(e.date)===currentMonth).reduce((s,e)=>s+Number(e.amount||0),0),avail=active.reduce((s,c)=>s+availableCash(c),0);repMRR.textContent=money(mrr);repPaid.textContent=money(paid);repUsed.textContent=money(used);repAvailable.textContent=money(avail);financeTable.innerHTML=db.clients.map(c=>`<tr><td>${esc(c.company)}</td><td>${money(c.contract)}</td><td>${money(paymentTotal(c.id))}</td><td>${money(c.executionCash)}</td><td>${money(usedTotal(c.id))}</td><td>${money(availableCash(c))}</td></tr>`).join('');entriesTable.innerHTML=[...db.entries].sort((a,b)=>b.date.localeCompare(a.date)).map(e=>`<tr><td>${new Date(e.date+'T12:00:00').toLocaleDateString('pt-BR')}</td><td>${esc(clientById(e.clientId)?.company||'-')}</td><td><span class="badge ${e.type==='Pagamento'?'green':'orange'}">${esc(e.type)}</span></td><td>${esc(e.description)}</td><td>${money(e.amount)}</td><td><button class="small" onclick="deleteEntry('${e.id}')">Excluir</button></td></tr>`).join('')}
+function openEntryModal(){if(!isAdmin())return;entryForm.reset();populateSelects();eDate.value=iso();entryModal.classList.add('show')}
+entryForm.addEventListener('submit',e=>{e.preventDefault();db.entries.push({id:uid(),clientId:eClient.value,type:eType.value,date:eDate.value,description:eDescription.value.trim(),amount:Number(eAmount.value||0)});closeModal('entryModal');saveDB();toast('Lançamento registrado.')})
+function deleteEntry(id){if(!isAdmin())return;db.entries=db.entries.filter(e=>e.id!==id);saveDB()}
+
+function renderClientPortal(){
+ if(!isClient())return;const c=clientById(currentUser.clientId);if(!c){clientPortalName.innerHTML='CLIENTE <span>NÃO VINCULADO</span>';clientServices.innerHTML='<div class="empty">Peça ao administrador para vincular este login a um cliente.</div>';return}
+ const services=db.services.filter(s=>s.clientId===c.id),progress=services.length?Math.round(services.reduce((s,x)=>s+Number(x.progress||0),0)/services.length):0;clientPortalName.innerHTML=`${esc(c.company).toUpperCase()} <span>EM TEMPO REAL</span>`;clientRing.style.setProperty('--progress',progress+'%');clientProgress.textContent=progress+'%';cliContract.textContent=money(c.contract);cliPaid.textContent=money(paymentTotal(c.id));cliAvailable.textContent=money(availableCash(c));cliUsed.textContent=money(usedTotal(c.id));
+ clientServices.innerHTML=services.length?services.map(s=>`<div class="service-card"><div class="service-top"><span class="badge">${esc(s.status)}</span><h3>${esc(s.name)}</h3><p>Responsável: ${esc(s.assigned||'-')}</p></div><div class="service-body"><div class="progress"><i style="width:${Number(s.progress||0)}%"></i></div><div style="display:flex;justify-content:space-between;margin:5px 0 10px;font-size:10px;color:#6e8194"><span>Progresso</span><b>${Number(s.progress||0)}%</b></div><div class="service-meta"><div class="mini-stat"><b>${money(s.contractValue)}</b><span>Valor contratado</span></div><div class="mini-stat"><b>${s.due?new Date(s.due+'T12:00:00').toLocaleDateString('pt-BR'):'-'}</b><span>Prazo</span></div></div><p style="font-size:11px;color:#6b7c8e;line-height:1.5">${esc(s.details||'')}</p></div></div>`).join(''):'<div class="empty">Nenhum serviço cadastrado ainda.</div>';
+ const pays=db.entries.filter(e=>e.clientId===c.id&&e.type==='Pagamento'&&monthKey(e.date)===currentMonth).sort((a,b)=>b.date.localeCompare(a.date)),uses=db.entries.filter(e=>e.clientId===c.id&&e.type==='Utilização'&&monthKey(e.date)===currentMonth).sort((a,b)=>b.date.localeCompare(a.date));clientPayments.innerHTML=pays.length?pays.map(e=>`<tr><td>${new Date(e.date+'T12:00:00').toLocaleDateString('pt-BR')}</td><td>${esc(e.description)}</td><td>${money(e.amount)}</td></tr>`).join(''):'<tr><td colspan="3" class="empty">Nenhum pagamento registrado neste mês.</td></tr>';clientUsage.innerHTML=uses.length?uses.map(e=>`<tr><td>${new Date(e.date+'T12:00:00').toLocaleDateString('pt-BR')}</td><td>${esc(e.description)}</td><td>${money(e.amount)}</td></tr>`).join(''):'<tr><td colspan="3" class="empty">Nenhuma utilização registrada neste mês.</td></tr>'
+}
+
+function renderUsers(){if(!isAdmin())return;usersTable.innerHTML=db.users.map(u=>`<tr><td>${esc(u.name)}</td><td>${esc(u.username)}</td><td><span class="badge">${esc(u.role)}</span></td><td>${esc(clientById(u.clientId)?.company||'-')}</td><td>${u.id===currentUser.id?'<span class="badge green">Em uso</span>':`<button class="small" onclick="deleteUser('${u.id}')">Excluir</button>`}</td></tr>`).join('')}
+uRole.addEventListener('change',()=>{uClient.disabled=uRole.value!=='Cliente'})
+userForm.addEventListener('submit',e=>{e.preventDefault();if(!isAdmin())return;if(db.users.some(u=>u.username.toLowerCase()===uUsername.value.trim().toLowerCase())){toast('Este nome de usuário já existe.');return}if(uRole.value==='Cliente'&&!uClient.value){toast('Vincule o login a um cliente.');return}db.users.push({id:uid(),name:uName.value.trim(),username:uUsername.value.trim(),email:uEmail.value.trim(),password:uPassword.value,role:uRole.value,clientId:uRole.value==='Cliente'?uClient.value:null,active:true});userForm.reset();saveDB();toast('Login criado.')})
+function deleteUser(id){if(!isAdmin()||id===currentUser.id)return;db.users=db.users.filter(u=>u.id!==id);saveDB()}
+document.querySelectorAll('.settings-tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.settings-tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.settings-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('settings-'+b.dataset.settings).classList.add('active')})
+function renderSettings(){if(!isAdmin())return;const s=db.systemSettings||{};cfgSystemName.value=s.systemName||'Sistema de Clientes HS + HN';cfgAdminName.value=s.adminName||'Henrique';cfgAlertDays.value=s.alertDays??3;const sh=JSON.parse(localStorage.getItem(SHARED_KEY)||'{}');siteCompany.value=sh.companyName||'HS START DIGITAL × HN MARKETING';siteWhatsappHS.value=sh.whatsappHS||'5513982105058';siteWhatsappHN.value=sh.whatsappHN||'5513991802942';siteQuoteLabel.value=sh.quoteLabel||'PEDIR ORÇAMENTO';siteClientLabel.value=sh.clientButtonLabel||'SISTEMA DE CLIENTES';siteFooter.value=sh.footerText||'Tecnologia que desenvolve. Criação que dá identidade.'}
+function saveSystemSettings(){if(!isAdmin())return;db.systemSettings={systemName:cfgSystemName.value.trim(),adminName:cfgAdminName.value.trim(),alertDays:Number(cfgAlertDays.value||3),currency:cfgCurrency.value};saveDB();toast('Configurações do sistema salvas.')}
+function saveSiteSettings(){if(!isAdmin())return;localStorage.setItem(SHARED_KEY,JSON.stringify({companyName:siteCompany.value.trim(),whatsappHS:siteWhatsappHS.value.trim(),whatsappHN:siteWhatsappHN.value.trim(),quoteLabel:siteQuoteLabel.value.trim(),clientButtonLabel:siteClientLabel.value.trim(),footerText:siteFooter.value.trim()}));toast('Configurações do site salvas neste navegador.')}
+
+function exportBackup(){if(!isAdmin())return;const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='HS-HN-Sistema-Backup.json';a.click();URL.revokeObjectURL(a.href)}
+importBackup.addEventListener('change',e=>{if(!isAdmin())return;const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o.users||!o.clients)throw 0;db=o;saveDB();toast('Backup importado.')}catch(err){alert('Backup inválido.')}};r.readAsText(f)})
+function resetDemo(){if(!isAdmin()||!confirm('Restaurar dados de demonstração?'))return;db=clone(DEMO);localStorage.setItem(DB_KEY,JSON.stringify(db));localStorage.removeItem(SESSION_KEY);location.reload()}
+
+restoreSession();
+</script>
+</body>
+</html>
