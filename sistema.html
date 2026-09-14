@@ -67,6 +67,117 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
 .toast{position:fixed;right:17px;bottom:17px;background:#06192c;color:#fff;padding:12px 15px;border-radius:12px;box-shadow:var(--shadow);display:none;z-index:130;font-size:12px}.toast.show{display:block}
 @media(max-width:1080px){.grid4{grid-template-columns:repeat(2,1fr)}.section-grid,.ledger-grid{grid-template-columns:1fr}.service-grid,.creative-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:820px){.login-shell{grid-template-columns:1fr}.login-brand{padding:45px 26px;min-height:380px}.app{grid-template-columns:1fr}.sidebar{position:fixed;left:-280px;width:265px;z-index:80;transition:.22s}.sidebar.open{left:0}.mobile-menu{display:block}.topbar{padding:0 15px}.content{padding:16px}.grid4,.kanban,.service-grid,.creative-grid,.form-grid,.client-hero{grid-template-columns:1fr}.status-ring{display:none}}
+
+/* ===== CENTRAL DE TRÁFEGO PAGO — ADMINISTRADOR ===== */
+.traffic-hero{
+  position:relative;overflow:hidden;border-radius:23px;padding:25px;color:#fff;
+  background:
+    radial-gradient(circle at 88% 20%,rgba(38,201,255,.22),transparent 30%),
+    linear-gradient(125deg,#031525 0%,#07345d 55%,#087ce1 100%);
+  box-shadow:var(--shadow);margin-bottom:16px
+}
+.traffic-hero::after{
+  content:"";position:absolute;width:360px;height:360px;border-radius:50%;
+  right:-120px;top:-150px;border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 0 80px rgba(35,199,255,.12)
+}
+.traffic-hero .kicker{font-size:10px;letter-spacing:.16em;font-weight:950;color:#78dcff}
+.traffic-hero h2{position:relative;z-index:2;margin:8px 0 8px;font-size:29px;line-height:1.04;letter-spacing:-.035em}
+.traffic-hero h2 span{color:#52d8ff}
+.traffic-hero p{position:relative;z-index:2;margin:0;color:#c8deef;font-size:12px;line-height:1.55;max-width:860px}
+.traffic-toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:15px 0}
+.traffic-toolbar .field{width:auto;min-width:260px}
+.traffic-progress-wrap{background:#fff;border:1px solid #e1ebf5;border-radius:17px;padding:15px;margin-bottom:15px}
+.traffic-progress-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px}
+.traffic-progress-top b{font-size:13px}.traffic-progress-top span{font-size:11px;color:var(--muted)}
+.traffic-progress{height:12px;background:#e7eef6;border-radius:999px;overflow:hidden}
+.traffic-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#087ce1,#20cdfa,#4de1bb);transition:.25s;border-radius:999px}
+.traffic-stage-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.traffic-stage{
+  background:#fff;border:1px solid #e0eaf4;border-radius:17px;padding:15px;
+  box-shadow:0 7px 24px rgba(0,28,54,.045)
+}
+.traffic-stage.done{border-color:rgba(24,166,106,.38);box-shadow:0 0 0 2px rgba(24,166,106,.045)}
+.stage-head{display:flex;gap:11px;align-items:flex-start;margin-bottom:10px}
+.stage-num{
+  flex:0 0 auto;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#062b4b,#0a8be8);color:#fff;font-weight:950;font-size:12px
+}
+.stage-head h3{font-size:14px;margin:0 0 4px}.stage-head p{margin:0;color:var(--muted);font-size:10px;line-height:1.45}
+.check-list{display:grid;gap:7px}
+.traffic-check{
+  display:flex;gap:8px;align-items:flex-start;padding:8px 9px;border-radius:10px;
+  background:#f8fbfe;border:1px solid #edf3f8;font-size:11px;line-height:1.42
+}
+.traffic-check input{margin-top:2px;accent-color:#087ce1}
+.traffic-check small{display:block;color:#718398;margin-top:2px}
+.traffic-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0 11px}
+.traffic-tab{
+  border:1px solid #dbe7f2;background:#fff;border-radius:10px;padding:8px 10px;
+  font-weight:850;font-size:10px;color:#42617d
+}
+.traffic-tab.active{background:#06213b;color:#fff;border-color:#06213b}
+.traffic-panel{display:none}.traffic-panel.active{display:block}
+.guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.guide-card{
+  background:#fff;border:1px solid #e0eaf4;border-radius:16px;padding:14px;
+  box-shadow:0 6px 20px rgba(0,28,54,.04)
+}
+.guide-card .tag{font-size:9px;text-transform:uppercase;font-weight:950;letter-spacing:.08em;color:#087ce1}
+.guide-card h4{font-size:14px;margin:7px 0}.guide-card p{font-size:10px;color:var(--muted);line-height:1.55;margin:0}
+.guide-card ol,.guide-card ul{margin:9px 0 0;padding-left:17px;color:#40566d;font-size:10px;line-height:1.6}
+.guide-card li{margin-bottom:4px}
+.metric-guide{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.metric-guide-card{background:#fff;border:1px solid #e0eaf4;border-radius:15px;padding:13px}
+.metric-guide-card b{display:block;font-size:16px;color:#0a6ebf}.metric-guide-card span{display:block;font-size:10px;font-weight:900;margin:5px 0 4px}.metric-guide-card small{color:var(--muted);font-size:9px;line-height:1.4;display:block}
+.audit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.audit-kpi{background:#061d34;color:#fff;border-radius:15px;padding:13px;border:1px solid #0e4778}
+.audit-kpi span{display:block;color:#8fc8ef;font-size:9px;text-transform:uppercase;font-weight:900;letter-spacing:.05em}.audit-kpi b{font-size:21px;display:block;margin-top:5px}
+.diagnosis{
+  border-radius:15px;padding:14px;border:1px solid #dbe8f4;background:#f9fcff;
+  font-size:11px;line-height:1.58;color:#344f68
+}
+.diagnosis strong{display:block;font-size:13px;color:#102a43;margin-bottom:5px}
+.diagnosis.red{background:#fff4f6;border-color:#ffcbd4;color:#7d2234}
+.diagnosis.orange{background:#fff8ec;border-color:#ffe0aa;color:#765114}
+.diagnosis.green{background:#effcf6;border-color:#c7f0dc;color:#176243}
+.utm-output{
+  display:flex;gap:8px;align-items:center;margin-top:10px;padding:10px;border-radius:11px;
+  background:#06192c;color:#d9efff;border:1px solid #104674;font-size:10px;word-break:break-all
+}
+.utm-output code{flex:1;white-space:normal}
+.preflight{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:8px
+}
+.preflight label{
+  display:flex;gap:8px;align-items:flex-start;background:#fff;border:1px solid #e3ecf5;
+  border-radius:11px;padding:10px;font-size:10px;line-height:1.45
+}
+.preflight input{margin-top:1px;accent-color:#18a66a}
+.traffic-log-form{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:8px;align-items:end}
+.traffic-callout{
+  border-left:4px solid #087ce1;background:#edf7ff;padding:12px 13px;border-radius:0 12px 12px 0;
+  color:#33516b;font-size:10px;line-height:1.55
+}
+.academy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.academy-grid details{background:#fff;border:1px solid #e2ebf4;border-radius:12px;padding:11px}
+.academy-grid summary{cursor:pointer;font-size:11px;font-weight:900;color:#163d60}
+.academy-grid p{font-size:10px;color:#60758a;line-height:1.55;margin:9px 0 0}
+.routine-table{display:grid;gap:8px}
+.routine-row{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:start;padding:10px;border:1px solid #e5edf5;background:#fff;border-radius:11px}
+.routine-row b{font-size:10px;color:#0b6eb9;text-transform:uppercase;letter-spacing:.05em}.routine-row span{font-size:10px;color:#5e7388;line-height:1.5}
+@media(max-width:1080px){
+  .guide-grid{grid-template-columns:1fr 1fr}
+  .metric-guide,.audit-grid{grid-template-columns:repeat(2,1fr)}
+  .traffic-log-form{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+  .traffic-stage-grid,.guide-grid,.metric-guide,.audit-grid,.preflight,.academy-grid{grid-template-columns:1fr}
+  .traffic-log-form{grid-template-columns:1fr}
+  .traffic-toolbar .field{width:100%;min-width:0}
+  .routine-row{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -101,6 +212,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
     <button class="nav-btn staff-nav" data-page="services"><span class="nav-icon">◆</span>Serviços</button>
     <button class="nav-btn staff-nav" data-page="tasks"><span class="nav-icon">✓</span>Tarefas</button>
     <button class="nav-btn staff-nav" data-page="creatives"><span class="nav-icon">◫</span>Criativos</button>
+    <button class="nav-btn admin-nav" data-page="traffic"><span class="nav-icon">🚀</span>Central de Tráfego Pago</button>
     <button class="nav-btn admin-nav" data-page="reports"><span class="nav-icon">↗</span>Financeiro & Relatórios</button>
     <button class="nav-btn client-nav" data-page="clientportal"><span class="nav-icon">◎</span>Meus Serviços</button>
     <div class="nav-title admin-nav">Administração</div>
@@ -165,6 +277,207 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
         <div class="creative-grid" id="creativeGrid"></div>
       </div>
 
+
+      <div class="page" id="page-traffic">
+        <div class="traffic-hero">
+          <div class="kicker">EXCLUSIVO DO ADMINISTRADOR · HS + HN</div>
+          <h2>CENTRAL DE <span>TRÁFEGO PAGO</span></h2>
+          <p>Do diagnóstico ao relatório: um roteiro operacional para não pular etapas, medir corretamente, publicar com segurança e otimizar com base em dados — não em achismo.</p>
+        </div>
+
+        <div class="traffic-toolbar">
+          <select class="field" id="trafficClientSelect"></select>
+          <button class="btn btn-primary" onclick="saveTrafficPlan()">Salvar progresso</button>
+          <button class="btn btn-light" onclick="resetTrafficPlan()">Reiniciar checklist</button>
+          <span class="badge green" id="trafficAutosave">✓ salvamento local</span>
+        </div>
+
+        <div class="traffic-progress-wrap">
+          <div class="traffic-progress-top"><b>Progresso do setup e operação</b><span id="trafficProgressText">0% concluído</span></div>
+          <div class="traffic-progress"><i id="trafficProgressBar"></i></div>
+        </div>
+
+        <div class="traffic-tabs">
+          <button class="traffic-tab active" data-traffic-tab="master">Passo a passo mestre</button>
+          <button class="traffic-tab" data-traffic-tab="metrics">Métricas & Diagnóstico</button>
+          <button class="traffic-tab" data-traffic-tab="meta">Meta Ads</button>
+          <button class="traffic-tab" data-traffic-tab="google">Google Ads</button>
+          <button class="traffic-tab" data-traffic-tab="tiktok">TikTok Ads</button>
+          <button class="traffic-tab" data-traffic-tab="utm">UTM & Tracking</button>
+          <button class="traffic-tab" data-traffic-tab="preflight">Auditoria antes de publicar</button>
+          <button class="traffic-tab" data-traffic-tab="routine">Rotina & Otimização</button>
+          <button class="traffic-tab" data-traffic-tab="academy">Academia HS/HN</button>
+        </div>
+
+        <div class="traffic-panel active" id="traffic-master">
+          <div class="traffic-stage-grid" id="trafficStageGrid"></div>
+        </div>
+
+        <div class="traffic-panel" id="traffic-metrics">
+          <div class="card">
+            <div class="card-head"><div><h3>Calculadora de campanha</h3><p>Preencha os números do período e o sistema calcula os indicadores essenciais.</p></div><span class="badge">Diagnóstico rápido</span></div>
+            <div class="form-grid">
+              <div class="form-group"><label>Impressões</label><input class="field traffic-audit" id="taImpressions" type="number" min="0"></div>
+              <div class="form-group"><label>Alcance</label><input class="field traffic-audit" id="taReach" type="number" min="0"></div>
+              <div class="form-group"><label>Cliques</label><input class="field traffic-audit" id="taClicks" type="number" min="0"></div>
+              <div class="form-group"><label>Investimento (R$)</label><input class="field traffic-audit" id="taSpend" type="number" min="0" step=".01"></div>
+              <div class="form-group"><label>Leads / Conversões</label><input class="field traffic-audit" id="taLeads" type="number" min="0"></div>
+              <div class="form-group"><label>Vendas</label><input class="field traffic-audit" id="taSales" type="number" min="0"></div>
+              <div class="form-group"><label>Receita atribuída (R$)</label><input class="field traffic-audit" id="taRevenue" type="number" min="0" step=".01"></div>
+              <div class="form-group"><label>Meta de CPL/CPA (R$)</label><input class="field traffic-audit" id="taTargetCPA" type="number" min="0" step=".01"></div>
+            </div>
+            <div class="audit-grid" style="margin-top:12px">
+              <div class="audit-kpi"><span>CPM</span><b id="kpiCPM">—</b></div>
+              <div class="audit-kpi"><span>CTR</span><b id="kpiCTR">—</b></div>
+              <div class="audit-kpi"><span>CPC</span><b id="kpiCPC">—</b></div>
+              <div class="audit-kpi"><span>Frequência</span><b id="kpiFreq">—</b></div>
+              <div class="audit-kpi"><span>CPL</span><b id="kpiCPL">—</b></div>
+              <div class="audit-kpi"><span>CPA venda</span><b id="kpiCPA">—</b></div>
+              <div class="audit-kpi"><span>Taxa conv.</span><b id="kpiCVR">—</b></div>
+              <div class="audit-kpi"><span>ROAS</span><b id="kpiROAS">—</b></div>
+            </div>
+            <div class="diagnosis" id="trafficDiagnosis" style="margin-top:12px"><strong>Diagnóstico</strong>Preencha os dados acima para receber uma leitura operacional.</div>
+          </div>
+
+          <div class="card" style="margin-top:14px">
+            <div class="card-head"><div><h3>O que cada métrica responde?</h3><p>Leitura imediata para tomada de decisão.</p></div></div>
+            <div class="metric-guide">
+              <div class="metric-guide-card"><b>CPM</b><span>Gasto ÷ impressões × 1.000</span><small>Quanto custa colocar a mensagem na frente das pessoas.</small></div>
+              <div class="metric-guide-card"><b>CTR</b><span>Cliques ÷ impressões × 100</span><small>Mostra se anúncio, oferta e criativo despertam interesse.</small></div>
+              <div class="metric-guide-card"><b>CPC</b><span>Gasto ÷ cliques</span><small>Quanto custa levar alguém para o próximo passo.</small></div>
+              <div class="metric-guide-card"><b>CVR</b><span>Conversões ÷ cliques × 100</span><small>Ajuda a avaliar página, formulário, WhatsApp e oferta.</small></div>
+              <div class="metric-guide-card"><b>CPL</b><span>Gasto ÷ leads</span><small>Custo médio de geração de cada lead.</small></div>
+              <div class="metric-guide-card"><b>CPA</b><span>Gasto ÷ vendas</span><small>Custo para gerar o resultado comercial final.</small></div>
+              <div class="metric-guide-card"><b>ROAS</b><span>Receita atribuída ÷ mídia</span><small>Quanto retorna em receita para cada R$ 1 em mídia.</small></div>
+              <div class="metric-guide-card"><b>Frequência</b><span>Impressões ÷ alcance</span><small>Quantas vezes, em média, a mesma pessoa viu o anúncio.</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="traffic-panel" id="traffic-meta">
+          <div class="guide-grid">
+            <div class="guide-card"><div class="tag">META · 01</div><h4>Objetivo de negócio</h4><p>Não comece pela campanha. Comece pelo resultado desejado.</p><ol><li>Defina venda, lead, mensagem, ligação ou agendamento.</li><li>Escolha o evento de conversão correspondente.</li><li>Defina meta de custo por resultado.</li></ol></div>
+            <div class="guide-card"><div class="tag">META · 02</div><h4>Estrutura & acessos</h4><ul><li>Portfólio/Business do cliente.</li><li>Página do Facebook.</li><li>Instagram.</li><li>Conta de anúncios.</li><li>Método de pagamento.</li><li>Domínio e permissões corretas.</li></ul></div>
+            <div class="guide-card"><div class="tag">META · 03</div><h4>Mensuração</h4><ul><li>Meta Pixel instalado.</li><li>Conversions API quando aplicável.</li><li>Eventos testados.</li><li>Domínio/URL corretos.</li><li>UTMs adicionadas.</li></ul></div>
+            <div class="guide-card"><div class="tag">META · 04</div><h4>Público</h4><ul><li>Localização coerente com a operação.</li><li>Faixa etária apenas quando fizer sentido.</li><li>Público amplo versus interesses conforme estratégia.</li><li>Excluir públicos que não devem receber a campanha.</li></ul></div>
+            <div class="guide-card"><div class="tag">META · 05</div><h4>Criativo</h4><ul><li>Gancho forte nos primeiros segundos.</li><li>Problema → promessa → prova → oferta → CTA.</li><li>Variações de ângulo.</li><li>Reels/Stories preferencialmente vertical 9:16.</li><li>Evitar texto importante fora da área segura.</li></ul></div>
+            <div class="guide-card"><div class="tag">META · 06</div><h4>Publicação e teste</h4><ul><li>Revisar orçamento e período.</li><li>Testar link/WhatsApp.</li><li>Publicar mais de uma variação criativa.</li><li>Evitar mexer sem motivo durante aprendizado.</li><li>Registrar alterações no histórico.</li></ul></div>
+          </div>
+        </div>
+
+        <div class="traffic-panel" id="traffic-google">
+          <div class="guide-grid">
+            <div class="guide-card"><div class="tag">GOOGLE · 01</div><h4>Conversão primeiro</h4><ul><li>Defina ação principal: lead, compra, ligação ou envio de formulário.</li><li>Configure Google Tag/GTM.</li><li>Teste a ação de conversão.</li><li>Vincule GA4 quando fizer parte da mensuração.</li></ul></div>
+            <div class="guide-card"><div class="tag">GOOGLE · 02</div><h4>Intenção de busca</h4><ul><li>Liste o que o cliente realmente procura.</li><li>Separe temas por grupos coerentes.</li><li>Use ampla, frase ou exata conforme estratégia.</li><li>Crie negativas desde o início.</li></ul></div>
+            <div class="guide-card"><div class="tag">GOOGLE · 03</div><h4>Anúncio responsivo</h4><ul><li>Crie títulos diferentes, não simples repetições.</li><li>Inclua benefício, oferta, prova e CTA.</li><li>Descrições complementares.</li><li>Assets/extensões relevantes.</li></ul></div>
+            <div class="guide-card"><div class="tag">GOOGLE · 04</div><h4>Página de destino</h4><ul><li>Mensagem deve corresponder à pesquisa.</li><li>Carregamento rápido e mobile.</li><li>CTA evidente.</li><li>Formulário simples.</li><li>Evento de conversão funcionando.</li></ul></div>
+            <div class="guide-card"><div class="tag">GOOGLE · 05</div><h4>Depois de publicar</h4><ul><li>Analise termos de pesquisa.</li><li>Adicione negativas.</li><li>Compare intenção, CTR e conversões.</li><li>Não avalie só CPC.</li><li>Revise orçamento perdido por limitação.</li></ul></div>
+            <div class="guide-card"><div class="tag">GOOGLE · 06</div><h4>Lances & escala</h4><p>Escolha estratégia de lance compatível com volume e meta. Só escale quando a mensuração estiver confiável e o resultado comercial fizer sentido.</p></div>
+          </div>
+        </div>
+
+        <div class="traffic-panel" id="traffic-tiktok">
+          <div class="guide-grid">
+            <div class="guide-card"><div class="tag">TIKTOK · 01</div><h4>Setup</h4><ul><li>Conta Ads e faturamento.</li><li>Pixel instalado.</li><li>Events API quando aplicável.</li><li>Evento correto selecionado.</li><li>UTM configurada.</li></ul></div>
+            <div class="guide-card"><div class="tag">TIKTOK · 02</div><h4>Criativo nativo</h4><ul><li>9:16.</li><li>Gancho imediato.</li><li>Ritmo rápido.</li><li>Mensagem simples.</li><li>Legenda/texto legível.</li><li>CTA claro.</li></ul></div>
+            <div class="guide-card"><div class="tag">TIKTOK · 03</div><h4>Estrutura de teste</h4><ul><li>Teste mais de um criativo.</li><li>Evite depender de uma única peça.</li><li>Compare ângulos, ganchos e ofertas.</li><li>Documente vencedor e fatigado.</li></ul></div>
+            <div class="guide-card"><div class="tag">TIKTOK · 04</div><h4>Orçamento</h4><p>Confirme sempre os mínimos e regras atuais dentro da plataforma. Não deixe limites fixos no seu processo porque a plataforma pode atualizá-los.</p></div>
+            <div class="guide-card"><div class="tag">TIKTOK · 05</div><h4>Aprendizado</h4><p>Evite alterações grandes e frequentes sem dados suficientes. Mudanças constantes dificultam a leitura do que realmente gerou melhora ou piora.</p></div>
+            <div class="guide-card"><div class="tag">TIKTOK · 06</div><h4>Otimização</h4><ul><li>Criativo é prioridade.</li><li>Compare retenção, clique e conversão.</li><li>Troque peças fatigadas.</li><li>Escalone apenas vencedores consistentes.</li></ul></div>
+          </div>
+        </div>
+
+        <div class="traffic-panel" id="traffic-utm">
+          <div class="section-grid">
+            <div class="card">
+              <div class="card-head"><div><h3>Gerador de UTM</h3><p>Padronize todos os links de anúncio.</p></div></div>
+              <div class="form-grid">
+                <div class="form-group"><label>URL final</label><input class="field" id="utmUrl" placeholder="https://seusite.com/pagina"></div>
+                <div class="form-group"><label>utm_source</label><input class="field" id="utmSource" placeholder="instagram, facebook, google, tiktok"></div>
+                <div class="form-group"><label>utm_medium</label><input class="field" id="utmMedium" value="paid_social"></div>
+                <div class="form-group"><label>utm_campaign</label><input class="field" id="utmCampaign" placeholder="cliente_oferta_mes"></div>
+                <div class="form-group"><label>utm_content</label><input class="field" id="utmContent" placeholder="video01_hookA"></div>
+                <div class="form-group"><label>utm_id</label><input class="field" id="utmId" placeholder="opcional"></div>
+              </div>
+              <button class="btn btn-primary" onclick="generateUTM()">Gerar URL</button>
+              <div class="utm-output"><code id="utmResult">A URL gerada aparecerá aqui.</code><button class="small" onclick="copyUTM()">Copiar</button></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div><h3>Checklist de tracking</h3><p>Antes de considerar mensuração concluída.</p></div></div>
+              <div class="list">
+                <div class="list-item"><span class="dot"></span><div class="list-main"><b>Evento de conversão</b><span>Definido de acordo com o resultado comercial real.</span></div></div>
+                <div class="list-item"><span class="dot"></span><div class="list-main"><b>Pixel / Tag</b><span>Instalado e testado no destino correto.</span></div></div>
+                <div class="list-item"><span class="dot"></span><div class="list-main"><b>Server-side quando aplicável</b><span>Conversions API / Events API conforme necessidade.</span></div></div>
+                <div class="list-item"><span class="dot"></span><div class="list-main"><b>UTM</b><span>Padrão definido para origem, mídia, campanha e criativo.</span></div></div>
+                <div class="list-item"><span class="dot"></span><div class="list-main"><b>Teste real</b><span>Faça uma conversão teste e confirme se aparece na plataforma.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="traffic-panel" id="traffic-preflight">
+          <div class="card">
+            <div class="card-head"><div><h3>AUDITAR CAMPANHA antes de publicar</h3><p>O administrador deve conseguir marcar todos os itens abaixo.</p></div><span class="badge orange" id="preflightStatus">Pendente</span></div>
+            <div class="preflight" id="preflightChecklist"></div>
+          </div>
+          <div class="traffic-callout" style="margin-top:12px"><b>Regra HS/HN:</b> uma campanha só deve receber o status “Liberada para publicação” quando destino, mensuração, orçamento, criativo, CTA e aprovação tiverem sido conferidos.</div>
+        </div>
+
+        <div class="traffic-panel" id="traffic-routine">
+          <div class="section-grid">
+            <div class="card">
+              <div class="card-head"><div><h3>Rotina operacional</h3><p>O que revisar e em qual frequência.</p></div></div>
+              <div class="routine-table">
+                <div class="routine-row"><b>Diariamente</b><span>Gasto, campanhas paradas, reprovações, tracking, orçamento acabando, leads, formulários, WhatsApp e anomalias.</span></div>
+                <div class="routine-row"><b>2–3x/semana</b><span>CTR, CPC, CPL/CPA, frequência, criativos, termos de pesquisa, qualidade dos leads e páginas.</span></div>
+                <div class="routine-row"><b>Semanalmente</b><span>Distribuição de orçamento, funil, testes, vencedores/perdedores e plano da próxima semana.</span></div>
+                <div class="routine-row"><b>Mensalmente</b><span>Investimento, receita, ROAS, vendas, lucratividade, relatório, aprendizados e renovação.</span></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div><h3>Regras de diagnóstico</h3><p>Por onde investigar antes de alterar campanha.</p></div></div>
+              <div class="list">
+                <div class="list-item"><span class="dot red"></span><div class="list-main"><b>Gasto sem conversão</b><span>Teste tracking → página → oferta → audiência antes de concluir que o algoritmo é o problema.</span></div></div>
+                <div class="list-item"><span class="dot orange"></span><div class="list-main"><b>CTR baixo</b><span>Investigue criativo, gancho, oferta e adequação da mensagem.</span></div></div>
+                <div class="list-item"><span class="dot orange"></span><div class="list-main"><b>CTR bom + poucos leads</b><span>Olhe página, formulário, velocidade, WhatsApp e fricção.</span></div></div>
+                <div class="list-item"><span class="dot red"></span><div class="list-main"><b>CPL bom + poucas vendas</b><span>Investigue qualidade do lead, atendimento, tempo de resposta, qualificação e proposta comercial.</span></div></div>
+                <div class="list-item"><span class="dot"></span><div class="list-main"><b>Performance saudável</b><span>Não faça alterações só para “mexer na campanha”. Documente e preserve o que funciona.</span></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:14px">
+            <div class="card-head"><div><h3>Histórico de alterações</h3><p>Registre o que mudou para saber o que causou melhora ou piora.</p></div></div>
+            <form class="traffic-log-form" id="trafficLogForm">
+              <div class="form-group"><label>Data</label><input class="field" id="tlDate" type="date" required></div>
+              <div class="form-group"><label>Plataforma</label><select class="field" id="tlPlatform"><option>Meta Ads</option><option>Google Ads</option><option>TikTok Ads</option><option>Outro</option></select></div>
+              <div class="form-group"><label>Alteração</label><input class="field" id="tlChange" placeholder="Ex.: orçamento 50 → 65" required></div>
+              <div class="form-group"><label>Motivo</label><input class="field" id="tlReason" placeholder="Ex.: CPA 20% abaixo da meta" required></div>
+              <button class="btn btn-primary">Registrar</button>
+            </form>
+            <div class="table-wrap" style="margin-top:11px"><table><thead><tr><th>Data</th><th>Cliente</th><th>Plataforma</th><th>Alteração</th><th>Motivo</th><th>Ação</th></tr></thead><tbody id="trafficLogTable"></tbody></table></div>
+          </div>
+        </div>
+
+        <div class="traffic-panel" id="traffic-academy">
+          <div class="card">
+            <div class="card-head"><div><h3>Academia HS/HN</h3><p>Explicações rápidas para decisões do dia a dia.</p></div></div>
+            <div class="academy-grid">
+              <details><summary>O que é Pixel?</summary><p>É um recurso de mensuração instalado no site para registrar ações como visualização, lead, checkout ou compra e devolver sinais para a plataforma de anúncios.</p></details>
+              <details><summary>O que é Conversions API / Events API?</summary><p>É uma forma de enviar eventos por integração servidor/plataforma, complementando a medição realizada pelo navegador quando aplicável.</p></details>
+              <details><summary>Quando olhar CTR?</summary><p>Use CTR para avaliar interesse no anúncio, mas nunca isoladamente. Um CTR alto com página ruim pode gerar muitos cliques e poucas conversões.</p></details>
+              <details><summary>CPL baixo significa campanha boa?</summary><p>Não necessariamente. Compare a qualidade dos leads, taxa de fechamento, CPA final e receita. Lead barato que não compra pode ser ruim para o negócio.</p></details>
+              <details><summary>O que é fadiga criativa?</summary><p>Quando a mesma audiência recebe repetidamente a peça e a resposta começa a piorar. Sinais podem incluir frequência subindo enquanto CTR ou conversão caem.</p></details>
+              <details><summary>O que são palavras negativas?</summary><p>No Google Search, são termos usados para impedir que o anúncio apareça em pesquisas que não fazem sentido para a oferta.</p></details>
+              <details><summary>Quando escalar?</summary><p>Quando mensuração está confiável, há volume suficiente e CPA/ROAS permanecem dentro da meta comercial. Escala não deve ser baseada em um único bom dia.</p></details>
+              <details><summary>O que registrar ao otimizar?</summary><p>Data, plataforma, campanha, valor anterior, novo valor, mudança feita, motivo e resultado observado posteriormente.</p></details>
+              <details><summary>Qual deve ser o primeiro diagnóstico?</summary><p>Confirme mensuração e destino. Sem tracking confiável, qualquer decisão baseada em CPA, ROAS ou conversões pode estar errada.</p></details>
+              <details><summary>Por que o atendimento comercial importa?</summary><p>Tráfego entrega oportunidades. Se o lead demora para ser atendido, recebe resposta ruim ou não é qualificado corretamente, a mídia pode parecer pior do que realmente é.</p></details>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="page" id="page-reports">
         <div class="page-head"><div><h2>Financeiro & Relatórios</h2><p>Visível somente para Administradores.</p></div><button class="btn btn-primary" onclick="openEntryModal()">+ Lançamento</button></div>
         <div class="grid4">
@@ -199,7 +512,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
           <div class="section-grid">
             <div class="card">
               <div class="card-head"><div><h3>Perfis de acesso</h3><p>Regras aplicadas no painel.</p></div></div>
-              <div class="role-rule"><b>Administrador</b><span>Acesso total: clientes, valores, custos, caixa, pagamentos, gráficos financeiros, relatórios, usuários, configurações do sistema e parâmetros do site.</span></div>
+              <div class="role-rule"><b>Administrador</b><span>Acesso total: clientes, valores, custos, caixa, pagamentos, gráficos financeiros, relatórios, Central de Tráfego Pago, auditorias, checklists, histórico de otimizações, usuários, configurações do sistema e parâmetros do site.</span></div>
               <div class="role-rule"><b>Funcionário</b><span>Acesso a cadastro e execução: clientes, serviços, tarefas e criativos. Não visualiza contrato, pagamentos, caixa, custos, relatórios financeiros ou configurações administrativas.</span></div>
               <div class="role-rule"><b>Cliente</b><span>Acesso somente ao próprio cadastro: serviços contratados, valor contratado, pagamentos do mês, caixa disponível, utilização detalhada e progresso das entregas.</span></div>
               <div class="notice">Importante: esta versão foi preparada para GitHub Pages e usa login local para demonstração. Para segurança real e acesso de vários dispositivos/clientes, publique o mesmo front-end com Firebase Authentication + Firestore.</div>
@@ -346,6 +659,22 @@ const DEMO={
 function clone(o){return JSON.parse(JSON.stringify(o))}
 function loadDB(){try{const d=JSON.parse(localStorage.getItem(DB_KEY));return d&&d.users?d:clone(DEMO)}catch(e){return clone(DEMO)}}
 let db=loadDB(), currentUser=null;
+
+function ensureTrafficSchema(){
+  if(!db.trafficPlans) db.trafficPlans={};
+  if(!db.trafficLogs) db.trafficLogs=[];
+  db.clients.forEach(c=>{
+    if(!db.trafficPlans[c.id]){
+      db.trafficPlans[c.id]={
+        checks:{}, preflight:{}, audit:{},
+        utm:{url:'',source:'',medium:'paid_social',campaign:'',content:'',id:''}
+      };
+    }
+  });
+  localStorage.setItem(DB_KEY,JSON.stringify(db));
+}
+ensureTrafficSchema();
+
 function saveDB(){localStorage.setItem(DB_KEY,JSON.stringify(db));renderAll()}
 function clientById(id){return db.clients.find(c=>c.id===id)}
 function paymentTotal(clientId){return db.entries.filter(e=>e.clientId===clientId&&e.type==='Pagamento'&&monthKey(e.date)===currentMonth).reduce((s,e)=>s+Number(e.amount||0),0)}
@@ -378,18 +707,19 @@ function enterApp(){
 function applyFinancialVisibility(){document.querySelectorAll('.admin-fin-field').forEach(el=>el.classList.toggle('hidden',!isAdmin()))}
 
 function goPage(name){
- if(name==='reports'&&!isAdmin())return;if(name==='settings'&&!isAdmin())return;if(name==='clientportal'&&!isClient())return;
+ if(name==='traffic'&&!isAdmin())return;if(name==='reports'&&!isAdmin())return;if(name==='settings'&&!isAdmin())return;if(name==='clientportal'&&!isClient())return;
  if(['clients','services','tasks','creatives'].includes(name)&&isClient())return;
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+name)?.classList.add('active');
  document.querySelectorAll('.nav-btn[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
- const titles={dashboard:'Dashboard',clients:'Clientes',services:'Serviços',tasks:'Tarefas',creatives:'Criativos',reports:'Financeiro & Relatórios',clientportal:'Portal do Cliente',settings:'Configurações'};
+ const titles={dashboard:'Dashboard',clients:'Clientes',services:'Serviços',tasks:'Tarefas',creatives:'Criativos',traffic:'Central de Tráfego Pago',reports:'Financeiro & Relatórios',clientportal:'Portal do Cliente',settings:'Configurações'};
  pageTitle.textContent=titles[name]||'Sistema';sidebar.classList.remove('open');if(name==='dashboard'&&isAdmin())setTimeout(drawFinanceChart,40)
 }
 document.querySelectorAll('.nav-btn[data-page]').forEach(b=>b.onclick=()=>goPage(b.dataset.page));mobileMenu.onclick=()=>sidebar.classList.toggle('open');
+if(document.querySelectorAll('.traffic-tab').length){document.querySelectorAll('.traffic-tab').forEach(b=>b.onclick=()=>openTrafficTab(b.dataset.trafficTab));}
 
 function renderAll(){
  if(!currentUser)return;
- populateSelects();renderDashboard();renderClients();renderServices();renderTasks();renderCreatives();renderReports();renderClientPortal();renderUsers();renderSettings();renderAlerts();applyFinancialVisibility();
+ ensureTrafficSchema();populateSelects();renderDashboard();renderClients();renderServices();renderTasks();renderCreatives();if(isAdmin())renderTraffic();renderReports();renderClientPortal();renderUsers();renderSettings();renderAlerts();applyFinancialVisibility();
 }
 function renderDashboard(){
  const active=db.clients.filter(c=>c.status==='Ativo');
@@ -434,7 +764,7 @@ function editClient(id){const c=clientById(id);if(!c)return;cId.value=c.id;cComp
 clientForm.addEventListener('submit',e=>{e.preventDefault();const id=cId.value,old=id?clientById(id):null;const obj={id:id||uid(),company:cCompany.value.trim(),niche:cNiche.value.trim(),status:cStatus.value,manager:cManager.value.trim(),end:cEnd.value,contact:cContact.value.trim(),contract:isAdmin()?Number(cContract.value||0):Number(old?.contract||0),executionCash:isAdmin()?Number(cExecutionCash.value||0):Number(old?.executionCash||0),note:cNote.value.trim()};if(id){db.clients[db.clients.findIndex(x=>x.id===id)]=obj}else{db.clients.push(obj);db.tasks.push({id:uid(),title:'Instalar Pixel/API',clientId:obj.id,status:'A Fazer',priority:'Alta',due:iso(),assigned:obj.manager||currentUser.name})}closeModal('clientModal');saveDB();toast(id?'Cliente atualizado.':'Cliente criado + tarefa Instalar Pixel/API gerada.')})
 function deleteClient(id){if(!isAdmin()||!confirm('Excluir cliente e dados relacionados?'))return;db.clients=db.clients.filter(c=>c.id!==id);db.services=db.services.filter(s=>s.clientId!==id);db.tasks=db.tasks.filter(t=>t.clientId!==id);db.creatives=db.creatives.filter(r=>r.clientId!==id);db.entries=db.entries.filter(e=>e.clientId!==id);db.users.forEach(u=>{if(u.clientId===id)u.clientId=null});saveDB()}
 
-function populateSelects(){const opts=db.clients.map(c=>`<option value="${c.id}">${esc(c.company)}</option>`).join('');['sClient','tClient','crClient','eClient','uClient'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=(id==='uClient'?'<option value="">Sem vínculo</option>':'')+opts})}
+function populateSelects(){const opts=db.clients.map(c=>`<option value="${c.id}">${esc(c.company)}</option>`).join('');['sClient','tClient','crClient','eClient','uClient','trafficClientSelect'].forEach(id=>{const el=document.getElementById(id);if(el){const before=id==='uClient'?'<option value="">Sem vínculo</option>':'';const old=el.value;el.innerHTML=before+opts;if(old&&[...el.options].some(o=>o.value===old))el.value=old;}})}
 function renderServices(){
  if(isClient())return;serviceGrid.innerHTML=db.services.length?db.services.map(s=>`<div class="service-card"><div class="service-top"><span class="badge">${esc(s.status)}</span><h3>${esc(s.name)}</h3><p>${esc(clientById(s.clientId)?.company||'Sem cliente')}</p></div><div class="service-body"><div class="progress"><i style="width:${Math.max(0,Math.min(100,Number(s.progress||0)))}%"></i></div><div style="display:flex;justify-content:space-between;margin-top:5px;font-size:10px;color:#6e8194"><span>Progresso</span><b>${Number(s.progress||0)}%</b></div><div class="service-meta"><div class="mini-stat"><b>${esc(s.assigned||'-')}</b><span>Responsável</span></div><div class="mini-stat"><b>${s.due?new Date(s.due+'T12:00:00').toLocaleDateString('pt-BR'):'-'}</b><span>Prazo</span></div>${isAdmin()?`<div class="mini-stat"><b>${money(s.contractValue)}</b><span>Valor serviço</span></div><div class="mini-stat"><b>${money(s.budget)}</b><span>Caixa previsto</span></div>`:''}</div><p style="font-size:11px;color:#6b7c8e;line-height:1.5">${esc(s.details||'')}</p><button class="small" onclick="editService('${s.id}')">Editar</button> ${isAdmin()?`<button class="small" onclick="deleteService('${s.id}')">Excluir</button>`:''}</div></div>`).join(''):'<div class="empty">Nenhum serviço cadastrado.</div>'
 }
@@ -478,6 +808,218 @@ function saveSiteSettings(){if(!isAdmin())return;localStorage.setItem(SHARED_KEY
 function exportBackup(){if(!isAdmin())return;const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='HS-HN-Sistema-Backup.json';a.click();URL.revokeObjectURL(a.href)}
 importBackup.addEventListener('change',e=>{if(!isAdmin())return;const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o.users||!o.clients)throw 0;db=o;saveDB();toast('Backup importado.')}catch(err){alert('Backup inválido.')}};r.readAsText(f)})
 function resetDemo(){if(!isAdmin()||!confirm('Restaurar dados de demonstração?'))return;db=clone(DEMO);localStorage.setItem(DB_KEY,JSON.stringify(db));localStorage.removeItem(SESSION_KEY);location.reload()}
+
+
+// ===== CENTRAL DE TRÁFEGO PAGO =====
+const TRAFFIC_STAGES=[
+ {id:'diagnosis',n:'01',title:'Diagnóstico do cliente',desc:'Entender o negócio antes de escolher plataforma.',items:[
+  ['business_goal','Definir o objetivo comercial real','Venda, lead, mensagem, ligação, agendamento ou compra.'],
+  ['offer','Definir produto/serviço e oferta','O que será anunciado e por que alguém deve agir agora.'],
+  ['audience','Mapear público e localização','Quem compra, onde está e quem não deve receber a campanha.'],
+  ['ticket_margin','Registrar ticket, margem e capacidade','Evita campanhas que geram demanda que o cliente não consegue atender.'],
+  ['target_result','Definir meta de CPL/CPA/ROAS','Transformar “quero vender mais” em uma meta mensurável.']
+ ]},
+ {id:'access',n:'02',title:'Acessos & propriedade',desc:'Garantir que os ativos estejam organizados e sob controle.',items:[
+  ['meta_access','Meta Business, Página, Instagram e conta de anúncios','Registrar IDs/permissões — não guardar senha em texto aberto.'],
+  ['google_access','Google Ads, GA4 e Tag Manager','Confirmar permissões administrativas necessárias.'],
+  ['tiktok_access','TikTok Ads e ativos associados','Confirmar conta, cobrança e permissões.'],
+  ['site_access','Site, domínio e landing page','Acesso suficiente para tags, eventos e correções.']
+ ]},
+ {id:'tracking',n:'03',title:'Mensuração & LGPD',desc:'Não gastar antes de saber medir.',items:[
+  ['event_defined','Conversão principal definida','O evento deve representar o resultado que importa.'],
+  ['meta_tracking','Pixel / Conversions API verificados','Testar eventos quando Meta fizer parte do plano.'],
+  ['google_tracking','Google Tag/GTM e conversão verificados','Faça uma conversão teste.'],
+  ['tiktok_tracking','Pixel / Events API verificados','Quando TikTok fizer parte do plano.'],
+  ['privacy','Privacidade/cookies revisados','Conferir transparência e consentimento quando aplicável.']
+ ]},
+ {id:'strategy',n:'04',title:'Estratégia & orçamento',desc:'Escolher canal e distribuir verba com lógica.',items:[
+  ['platform_choice','Escolher plataforma pela intenção','Google para demanda ativa; social para descoberta/remarketing conforme caso.'],
+  ['funnel','Definir etapa do funil','Aquisição, consideração, remarketing ou retenção.'],
+  ['budget','Definir verba e limite operacional','Quanto pode ser investido sem comprometer o caixa.'],
+  ['test_plan','Definir plano de testes','O que será testado primeiro: criativo, oferta, público, palavra-chave ou página.']
+ ]},
+ {id:'creative',n:'05',title:'Criativos & mensagem',desc:'Construir ativos antes de depender da mídia.',items:[
+  ['hook','Criar pelo menos 3 ganchos','Evitar depender de um único ângulo.'],
+  ['copy','Copy com problema, promessa, prova, oferta e CTA','A mensagem deve conduzir a uma ação.'],
+  ['formats','Formatos adequados por canal','Vertical para Reels/TikTok; assets coerentes para Search/Display quando usados.'],
+  ['approval','Cliente aprovou criativos e oferta','Registrar aprovação antes de publicar.']
+ ]},
+ {id:'campaign',n:'06',title:'Construção da campanha',desc:'Montar a campanha sem pular configurações.',items:[
+  ['objective','Objetivo/evento corretos','Evitar otimizar para uma ação que não representa o negócio.'],
+  ['geo','Localização, idioma e audiência revisados','Evitar gasto fora da área atendida.'],
+  ['placement_keywords','Posicionamentos ou palavras-chave revisados','Dependendo da plataforma.'],
+  ['destination','Destino, WhatsApp ou formulário testado','Clique deve chegar ao lugar certo.'],
+  ['utm','UTM adicionada','Padronizar origem, mídia, campanha e criativo.']
+ ]},
+ {id:'audit',n:'07',title:'Auditoria pré-publicação',desc:'Revisão final antes de começar a gastar.',items:[
+  ['tracking_test','Conversão testada na prática','Não apenas “tag instalada”.'],
+  ['billing','Cobrança e orçamento conferidos','Evita campanha parar logo após iniciar.'],
+  ['dates','Datas e horários conferidos','Principalmente promoções e campanhas locais.'],
+  ['spelling','Copy, URL, telefone e CTA revisados','Pequenos erros desperdiçam mídia.']
+ ]},
+ {id:'launch',n:'08',title:'Publicação & aprendizado',desc:'Publicar, observar e evitar interferência sem dados.',items:[
+  ['approved','Anúncios aprovados e entregando','Checar reprovações e limitações.'],
+  ['spend','Investimento iniciou normalmente','Nem todo “ativo” está de fato entregando.'],
+  ['lead_test','Lead/conversão chegou ao CRM/WhatsApp','Validar ponta a ponta.'],
+  ['learning','Evitar alterações compulsivas','Dar contexto suficiente antes de julgar um teste.']
+ ]},
+ {id:'optimization',n:'09',title:'Otimização',desc:'Diagnosticar o gargalo antes de mexer.',items:[
+  ['creative_review','CTR/criativos analisados','Se interesse caiu, investigar mensagem antes de aumentar verba.'],
+  ['funnel_review','Página e conversão analisadas','CTR bom e CVR ruim aponta possível gargalo após o clique.'],
+  ['sales_quality','Qualidade e fechamento dos leads revisados','CPL barato não garante venda.'],
+  ['search_terms','Termos de pesquisa/negativas revisados','Obrigatório quando Google Search fizer parte do plano.'],
+  ['change_log','Alterações registradas no histórico','Saber o que realmente causou melhora ou piora.']
+ ]},
+ {id:'report',n:'10',title:'Relatório & escala',desc:'Transformar dados em decisão e próximo plano.',items:[
+  ['business_result','Resultado comercial reconciliado','Comparar mídia com vendas/receita real.'],
+  ['report_client','Relatório simples preparado para o cliente','O que investiu, o que gerou, o que aprendemos e o próximo passo.'],
+  ['winner','Vencedores e perdedores identificados','Criativos, palavras, públicos, páginas e ofertas.'],
+  ['scale_rule','Regra de escala definida','Escalar somente com tracking confiável e resultado sustentável.']
+ ]}
+];
+
+const PREFLIGHT_ITEMS=[
+ ['pf_conversion','Conversão principal definida e testada'],
+ ['pf_destination','URL, WhatsApp, formulário ou checkout funcionando'],
+ ['pf_tracking','Pixel/Tag/eventos registrando corretamente'],
+ ['pf_budget','Orçamento e método de pagamento confirmados'],
+ ['pf_targeting','Localização/público/palavras-chave revisados'],
+ ['pf_schedule','Datas e programação conferidas'],
+ ['pf_creative','Criativos aprovados e sem erro visual/textual'],
+ ['pf_copy','Copy, título, oferta e CTA revisados'],
+ ['pf_utm','UTM adicionada quando aplicável'],
+ ['pf_mobile','Destino testado no celular'],
+ ['pf_approval','Cliente aprovou oferta/material'],
+ ['pf_policy','Políticas e requisitos da plataforma revisados']
+];
+
+function getTrafficClientId(){
+ const el=document.getElementById('trafficClientSelect');
+ return el?.value || db.clients[0]?.id || '';
+}
+function getTrafficPlan(id=getTrafficClientId()){
+ ensureTrafficSchema();
+ if(!id)return null;
+ if(!db.trafficPlans[id])db.trafficPlans[id]={checks:{},preflight:{},audit:{},utm:{url:'',source:'',medium:'paid_social',campaign:'',content:'',id:''}};
+ return db.trafficPlans[id];
+}
+function openTrafficTab(name){
+ document.querySelectorAll('.traffic-tab').forEach(x=>x.classList.toggle('active',x.dataset.trafficTab===name));
+ document.querySelectorAll('.traffic-panel').forEach(x=>x.classList.remove('active'));
+ document.getElementById('traffic-'+name)?.classList.add('active');
+ if(name==='metrics')calcTrafficMetrics();
+ if(name==='preflight')renderPreflight();
+}
+function renderTraffic(){
+ if(!isAdmin())return;
+ const sel=document.getElementById('trafficClientSelect'); if(!sel)return;
+ const previous=sel.value;
+ sel.innerHTML=db.clients.map(c=>`<option value="${c.id}">${esc(c.company)}</option>`).join('');
+ if(previous&&db.clients.some(c=>c.id===previous))sel.value=previous;
+ if(!sel.dataset.bound){sel.addEventListener('change',()=>{renderTraffic();});sel.dataset.bound='1'}
+ const plan=getTrafficPlan(); if(!plan)return;
+ trafficStageGrid.innerHTML=TRAFFIC_STAGES.map(stage=>{
+   const done=stage.items.every(it=>!!plan.checks[it[0]]);
+   return `<div class="traffic-stage ${done?'done':''}">
+     <div class="stage-head"><div class="stage-num">${stage.n}</div><div><h3>${esc(stage.title)}</h3><p>${esc(stage.desc)}</p></div></div>
+     <div class="check-list">${stage.items.map(it=>`<label class="traffic-check"><input type="checkbox" data-traffic-check="${it[0]}" ${plan.checks[it[0]]?'checked':''}><span><b>${esc(it[1])}</b><small>${esc(it[2])}</small></span></label>`).join('')}</div>
+   </div>`
+ }).join('');
+ document.querySelectorAll('[data-traffic-check]').forEach(ch=>ch.onchange=()=>{plan.checks[ch.dataset.trafficCheck]=ch.checked;saveTrafficPlan(true)});
+ restoreAuditInputs(plan);
+ restoreUTM(plan);
+ renderPreflight();
+ renderTrafficLogs();
+ updateTrafficProgress();
+ bindTrafficAudit();
+}
+function updateTrafficProgress(){
+ const p=getTrafficPlan();if(!p)return;
+ const ids=TRAFFIC_STAGES.flatMap(s=>s.items.map(i=>i[0]));const checked=ids.filter(id=>p.checks[id]).length;
+ const pct=ids.length?Math.round(checked/ids.length*100):0;
+ trafficProgressBar.style.width=pct+'%';trafficProgressText.textContent=`${pct}% concluído · ${checked}/${ids.length} itens`;
+}
+function saveTrafficPlan(silent=false){
+ if(!isAdmin())return;const p=getTrafficPlan();if(!p)return;
+ collectAudit(p);collectUTM(p);localStorage.setItem(DB_KEY,JSON.stringify(db));updateTrafficProgress();
+ document.querySelectorAll('.traffic-stage').forEach((el,i)=>{const s=TRAFFIC_STAGES[i];el.classList.toggle('done',s.items.every(it=>p.checks[it[0]]))});
+ if(!silent)toast('Plano de tráfego salvo para este cliente.');
+}
+function resetTrafficPlan(){
+ if(!isAdmin()||!confirm('Reiniciar checklist de tráfego deste cliente?'))return;
+ const id=getTrafficClientId();db.trafficPlans[id]={checks:{},preflight:{},audit:{},utm:{url:'',source:'',medium:'paid_social',campaign:'',content:'',id:''}};
+ localStorage.setItem(DB_KEY,JSON.stringify(db));renderTraffic();toast('Checklist reiniciado.');
+}
+function bindTrafficAudit(){
+ document.querySelectorAll('.traffic-audit').forEach(el=>{if(el.dataset.bound)return;el.addEventListener('input',()=>{const p=getTrafficPlan();collectAudit(p);localStorage.setItem(DB_KEY,JSON.stringify(db));calcTrafficMetrics()});el.dataset.bound='1'})
+}
+function collectAudit(p){
+ if(!p)return;
+ p.audit={impressions:+taImpressions.value||0,reach:+taReach.value||0,clicks:+taClicks.value||0,spend:+taSpend.value||0,leads:+taLeads.value||0,sales:+taSales.value||0,revenue:+taRevenue.value||0,targetCPA:+taTargetCPA.value||0}
+}
+function restoreAuditInputs(p){
+ const a=p.audit||{};taImpressions.value=a.impressions||'';taReach.value=a.reach||'';taClicks.value=a.clicks||'';taSpend.value=a.spend||'';taLeads.value=a.leads||'';taSales.value=a.sales||'';taRevenue.value=a.revenue||'';taTargetCPA.value=a.targetCPA||'';calcTrafficMetrics()
+}
+function calcTrafficMetrics(){
+ const imp=+taImpressions?.value||0,reach=+taReach?.value||0,clicks=+taClicks?.value||0,spend=+taSpend?.value||0,leads=+taLeads?.value||0,sales=+taSales?.value||0,rev=+taRevenue?.value||0,target=+taTargetCPA?.value||0;
+ const cpm=imp?spend/imp*1000:null,ctr=imp?clicks/imp*100:null,cpc=clicks?spend/clicks:null,freq=reach?imp/reach:null,cpl=leads?spend/leads:null,cpa=sales?spend/sales:null,cvr=clicks?leads/clicks*100:null,roas=spend?rev/spend:null;
+ const fm=v=>v==null?'—':money(v),fp=v=>v==null?'—':v.toFixed(2)+'%',fn=v=>v==null?'—':v.toFixed(2);
+ kpiCPM.textContent=fm(cpm);kpiCTR.textContent=fp(ctr);kpiCPC.textContent=fm(cpc);kpiFreq.textContent=fn(freq);kpiCPL.textContent=fm(cpl);kpiCPA.textContent=fm(cpa);kpiCVR.textContent=fp(cvr);kpiROAS.textContent=roas==null?'—':roas.toFixed(2)+'x';
+ let cls='',title='Diagnóstico',msg='Preencha os dados acima para receber uma leitura operacional.';
+ if(spend>0){
+   if(clicks===0){cls='red';title='🔴 Sem clique';msg='Há investimento sem clique. Revise entrega, criativo, oferta, segmentação e se a campanha está realmente atingindo pessoas relevantes.'}
+   else if(leads===0){cls='red';title='🔴 Clique sem conversão';msg='Existe tráfego, mas nenhuma conversão registrada. Primeiro teste tracking e destino; depois revise página, formulário, WhatsApp, oferta e aderência do público.'}
+   else if(sales===0){cls='orange';title='🟠 Leads sem venda registrada';msg='A aquisição está gerando leads. Antes de mudar a mídia, investigue qualidade, tempo de resposta, atendimento, qualificação, proposta e acompanhamento comercial.'}
+   else if(target>0 && cpa!=null && cpa>target){cls='orange';title='🟠 CPA acima da meta';msg=`CPA atual ${money(cpa)} versus meta ${money(target)}. Descubra em qual etapa ocorre a perda: anúncio → clique → lead → venda. Evite alterar várias variáveis ao mesmo tempo.`}
+   else if(roas!=null && roas>=1){cls='green';title='🟢 Campanha gerando receita atribuída';msg=`ROAS atual ${roas.toFixed(2)}x. Verifique margem e lucro antes de escalar. Registre qualquer alteração para medir o efeito posteriormente.`}
+   else {cls='orange';title='🟠 Há conversões, mas falta contexto financeiro';msg='Compare CPA com margem, ticket e receita real. Performance de mídia não deve ser julgada apenas por clique ou lead.'}
+ }
+ trafficDiagnosis.className='diagnosis '+cls;trafficDiagnosis.innerHTML=`<strong>${title}</strong>${msg}`;
+}
+function collectUTM(p){
+ if(!p)return;p.utm={url:utmUrl.value.trim(),source:utmSource.value.trim(),medium:utmMedium.value.trim(),campaign:utmCampaign.value.trim(),content:utmContent.value.trim(),id:utmId.value.trim()}
+}
+function restoreUTM(p){
+ const u=p.utm||{};utmUrl.value=u.url||'';utmSource.value=u.source||'';utmMedium.value=u.medium||'paid_social';utmCampaign.value=u.campaign||'';utmContent.value=u.content||'';utmId.value=u.id||'';utmResult.textContent='A URL gerada aparecerá aqui.'
+}
+function generateUTM(){
+ const p=getTrafficPlan();collectUTM(p);localStorage.setItem(DB_KEY,JSON.stringify(db));
+ if(!utmUrl.value.trim()){toast('Informe a URL final.');return}
+ try{
+  const u=new URL(utmUrl.value.trim());
+  if(utmSource.value.trim())u.searchParams.set('utm_source',utmSource.value.trim());
+  if(utmMedium.value.trim())u.searchParams.set('utm_medium',utmMedium.value.trim());
+  if(utmCampaign.value.trim())u.searchParams.set('utm_campaign',utmCampaign.value.trim());
+  if(utmContent.value.trim())u.searchParams.set('utm_content',utmContent.value.trim());
+  if(utmId.value.trim())u.searchParams.set('utm_id',utmId.value.trim());
+  utmResult.textContent=u.toString();
+ }catch(e){toast('Digite uma URL válida iniciando com https://');}
+}
+function copyUTM(){
+ const t=utmResult.textContent;if(!t||t.startsWith('A URL'))return;
+ navigator.clipboard?.writeText(t).then(()=>toast('UTM copiada.')).catch(()=>toast('Selecione e copie a URL manualmente.'));
+}
+function renderPreflight(){
+ if(!isAdmin())return;const p=getTrafficPlan();if(!p)return;
+ preflightChecklist.innerHTML=PREFLIGHT_ITEMS.map(it=>`<label><input type="checkbox" data-preflight="${it[0]}" ${p.preflight[it[0]]?'checked':''}><span>${esc(it[1])}</span></label>`).join('');
+ document.querySelectorAll('[data-preflight]').forEach(ch=>ch.onchange=()=>{p.preflight[ch.dataset.preflight]=ch.checked;localStorage.setItem(DB_KEY,JSON.stringify(db));renderPreflightStatus()});
+ renderPreflightStatus()
+}
+function renderPreflightStatus(){
+ const p=getTrafficPlan();if(!p)return;const ok=PREFLIGHT_ITEMS.filter(it=>p.preflight[it[0]]).length,total=PREFLIGHT_ITEMS.length;
+ preflightStatus.textContent=ok===total?'✓ LIBERADA PARA PUBLICAÇÃO':`${ok}/${total} conferidos`;
+ preflightStatus.className='badge '+(ok===total?'green':'orange');
+}
+trafficLogForm?.addEventListener('submit',e=>{
+ e.preventDefault();if(!isAdmin())return;const cid=getTrafficClientId();db.trafficLogs.push({id:uid(),clientId:cid,date:tlDate.value||iso(),platform:tlPlatform.value,change:tlChange.value.trim(),reason:tlReason.value.trim(),user:currentUser.name});
+ localStorage.setItem(DB_KEY,JSON.stringify(db));trafficLogForm.reset();tlDate.value=iso();renderTrafficLogs();toast('Alteração registrada.')
+});
+function renderTrafficLogs(){
+ if(!isAdmin())return;const cid=getTrafficClientId();const arr=(db.trafficLogs||[]).filter(l=>l.clientId===cid).sort((a,b)=>b.date.localeCompare(a.date));
+ trafficLogTable.innerHTML=arr.length?arr.map(l=>`<tr><td>${new Date(l.date+'T12:00:00').toLocaleDateString('pt-BR')}</td><td>${esc(clientById(l.clientId)?.company||'-')}</td><td>${esc(l.platform)}</td><td>${esc(l.change)}</td><td>${esc(l.reason)}</td><td><button class="small" onclick="deleteTrafficLog('${l.id}')">Excluir</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">Nenhuma alteração registrada para este cliente.</td></tr>';
+ if(!tlDate.value)tlDate.value=iso()
+}
+function deleteTrafficLog(id){if(!isAdmin())return;db.trafficLogs=db.trafficLogs.filter(l=>l.id!==id);localStorage.setItem(DB_KEY,JSON.stringify(db));renderTrafficLogs()}
 
 restoreSession();
 </script>
