@@ -226,6 +226,77 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
   .stage-percent-wrap{min-width:70px}
 }
 
+
+/* ===== RADAR DE MERCADO & CRIATIVOS — ADMINISTRADOR ===== */
+.radar-hero{
+  position:relative;overflow:hidden;border-radius:23px;padding:25px;color:#fff;margin-bottom:15px;
+  background:
+    radial-gradient(circle at 84% 22%,rgba(255,180,0,.18),transparent 28%),
+    radial-gradient(circle at 16% 78%,rgba(30,199,255,.16),transparent 26%),
+    linear-gradient(125deg,#031525 0%,#083862 55%,#075fae 100%);
+  box-shadow:var(--shadow)
+}
+.radar-hero:after{content:"";position:absolute;right:-80px;top:-110px;width:330px;height:330px;border-radius:50%;border:1px solid rgba(89,214,255,.2)}
+.radar-hero .kicker{font-size:10px;letter-spacing:.16em;font-weight:950;color:#73d9ff}
+.radar-hero h2{position:relative;z-index:2;margin:8px 0;font-size:29px;line-height:1.05}
+.radar-hero h2 span{color:#ffca3b}.radar-hero p{position:relative;z-index:2;margin:0;max-width:850px;color:#c9ddec;font-size:12px;line-height:1.58}
+.radar-warning{margin-top:12px;padding:10px 12px;border-radius:11px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);font-size:10px;color:#dceeff;line-height:1.5}
+.radar-toolbar{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr auto;gap:9px;align-items:end;margin-bottom:14px}
+.radar-source-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.radar-source{
+  border:1px solid #dce8f3;background:#fff;border-radius:13px;padding:11px;text-align:left;
+  transition:.2s;box-shadow:0 5px 18px rgba(0,28,54,.04)
+}
+.radar-source:hover{transform:translateY(-2px);border-color:#8acfff;box-shadow:0 10px 24px rgba(0,74,137,.08)}
+.radar-source b{display:block;font-size:11px;color:#153c5f}.radar-source small{display:block;color:#71859a;font-size:9px;line-height:1.4;margin-top:3px}
+.radar-source .source-icon{font-size:20px;margin-bottom:6px;display:block}
+.radar-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0 10px}
+.radar-tab{border:1px solid #dce7f2;background:#fff;border-radius:10px;padding:8px 10px;font-size:10px;font-weight:900;color:#42617d}
+.radar-tab.active{background:#061f38;color:#fff;border-color:#061f38}
+.radar-panel{display:none}.radar-panel.active{display:block}
+.radar-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.radar-kpi{background:#fff;border:1px solid #e0eaf4;border-radius:15px;padding:13px;box-shadow:0 5px 18px rgba(0,28,54,.04)}
+.radar-kpi span{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.05em;color:#74869a;font-weight:950}
+.radar-kpi b{display:block;font-size:22px;color:#0a6ebf;margin:6px 0 2px}.radar-kpi small{display:block;font-size:9px;color:#75879a}
+.radar-score{
+  width:126px;height:126px;border-radius:50%;display:grid;place-items:center;position:relative;
+  background:conic-gradient(#21c7ff var(--score,0%),#e7eff6 0);margin:auto
+}
+.radar-score:after{content:"";position:absolute;inset:11px;background:#fff;border-radius:50%}
+.radar-score-content{position:relative;z-index:2;text-align:center}.radar-score-content b{font-size:27px;color:#0a6ebf;display:block}.radar-score-content span{font-size:9px;color:#6b7f93}
+.radar-leader{padding:11px;border:1px solid #e3edf5;background:#f9fcff;border-radius:12px;margin-bottom:8px}
+.radar-leader b{display:block;font-size:12px}.radar-leader span{font-size:10px;color:#6c8195;margin-top:3px;display:block}
+.radar-tag-cloud{display:flex;gap:7px;flex-wrap:wrap}.radar-tag{padding:6px 8px;border-radius:999px;background:#edf7ff;border:1px solid #d5ecff;color:#126baa;font-size:9px;font-weight:900}
+.signal-form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.signal-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.signal-preview{width:100%;max-height:260px;object-fit:contain;border-radius:13px;background:#edf3f8;border:1px solid #dce8f2;display:none;margin-top:9px}
+.signal-card{background:#fff;border:1px solid #e0eaf4;border-radius:16px;overflow:hidden;box-shadow:0 6px 20px rgba(0,28,54,.04)}
+.signal-image{height:150px;background:linear-gradient(135deg,#06213b,#0a73c9);display:grid;place-items:center;color:#fff;font-size:33px;overflow:hidden}
+.signal-image img{width:100%;height:100%;object-fit:cover}
+.signal-body{padding:13px}.signal-body h4{font-size:13px;margin:7px 0 4px}.signal-body p{font-size:10px;color:#687d92;line-height:1.5;margin:0}
+.signal-stats{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.signal-stat{font-size:9px;padding:5px 7px;border-radius:8px;background:#f1f7fc;color:#42627f}
+.signal-list-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.reco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.reco-card{position:relative;background:linear-gradient(145deg,#06182d,#073d69);color:#fff;border-radius:16px;padding:15px;border:1px solid #0d568f;overflow:hidden}
+.reco-card:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-40px;top:-40px;background:rgba(34,201,255,.08)}
+.reco-card .num{font-size:9px;color:#73d9ff;text-transform:uppercase;letter-spacing:.08em;font-weight:950}
+.reco-card h4{font-size:14px;margin:7px 0}.reco-card p{font-size:10px;color:#bed6e8;line-height:1.55;margin:0}.reco-card ul{font-size:10px;color:#d8eafa;line-height:1.55;padding-left:16px;margin:9px 0 0}
+.radar-formula{font-size:9px;color:#6d8296;line-height:1.55;padding:10px 11px;background:#f7fbff;border:1px dashed #cfe1ef;border-radius:11px;margin-top:9px}
+.radar-history-item{display:grid;grid-template-columns:92px 1fr auto;gap:10px;align-items:center;padding:10px;border:1px solid #e4edf5;border-radius:11px;background:#fff;margin-bottom:7px}
+.radar-history-item b{font-size:11px}.radar-history-item span{font-size:10px;color:#718397}
+.radar-history-score{font-size:17px!important;font-weight:950!important;color:#0a6ebf!important}
+.photo-note{font-size:9px;color:#7a8c9d;line-height:1.45;margin-top:6px}
+@media(max-width:1100px){
+  .radar-toolbar{grid-template-columns:1fr 1fr}
+  .radar-source-grid{grid-template-columns:repeat(3,1fr)}
+  .radar-grid-4{grid-template-columns:repeat(2,1fr)}
+  .signal-form-grid{grid-template-columns:1fr 1fr}
+  .signal-list-grid,.reco-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:820px){
+  .radar-toolbar,.radar-source-grid,.radar-grid-4,.signal-form-grid,.signal-metrics,.signal-list-grid,.reco-grid{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -261,6 +332,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
     <button class="nav-btn staff-nav" data-page="tasks"><span class="nav-icon">✓</span>Tarefas</button>
     <button class="nav-btn staff-nav" data-page="creatives"><span class="nav-icon">◫</span>Criativos</button>
     <button class="nav-btn admin-nav" data-page="traffic"><span class="nav-icon">🚀</span>Central de Tráfego Pago</button>
+    <button class="nav-btn admin-nav" data-page="radar"><span class="nav-icon">🔎</span>Radar de Mercado & Criativos</button>
     <button class="nav-btn admin-nav" data-page="reports"><span class="nav-icon">↗</span>Financeiro & Relatórios</button>
     <button class="nav-btn client-nav" data-page="clientportal"><span class="nav-icon">◎</span>Meus Serviços</button>
     <div class="nav-title admin-nav">Administração</div>
@@ -534,6 +606,126 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
         </div>
       </div>
 
+
+      <div class="page" id="page-radar">
+        <div class="radar-hero">
+          <div class="kicker">ADMINISTRADOR · INTELIGÊNCIA DE MERCADO</div>
+          <h2>🔎 RADAR DE <span>MERCADO & CRIATIVOS</span></h2>
+          <p>Organize sinais públicos de tendências, anúncios, concorrentes e criativos para descobrir padrões de formato, visual, oferta e CTA com mais rapidez — e transformar os aprendizados em ideias de campanha.</p>
+          <div class="radar-warning"><b>Como funciona nesta versão GitHub Pages:</b> o sistema abre fontes públicas de pesquisa e analisa os sinais que você registra aqui. Ele não finge fazer scraping automático. Para varredura automática real e análise visual por IA, será necessário conectar um backend/API depois.</div>
+        </div>
+
+        <div class="radar-toolbar">
+          <div class="form-group"><label>Cliente</label><select class="field" id="radarClient"></select></div>
+          <div class="form-group"><label>Nicho</label><input class="field" id="radarNiche" placeholder="Ex.: salão de beleza"></div>
+          <div class="form-group"><label>Cidade / Região</label><input class="field" id="radarRegion" placeholder="Ex.: Santos, SP"></div>
+          <div class="form-group"><label>Objetivo</label><select class="field" id="radarGoal"><option>Vendas</option><option>Leads</option><option>WhatsApp</option><option>Reconhecimento</option><option>Visitas à loja</option></select></div>
+          <button class="btn btn-primary" onclick="runRadarAnalysis()">ANALISAR MERCADO</button>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><div><h3>Abrir fontes públicas</h3><p>Use o nicho/região acima. Depois registre os sinais relevantes encontrados.</p></div><span class="badge">Pesquisa assistida</span></div>
+          <div class="radar-source-grid">
+            <button class="radar-source" onclick="openRadarSource('trends')"><span class="source-icon">📈</span><b>Google Trends</b><small>Interesse de busca e termos relacionados.</small></button>
+            <button class="radar-source" onclick="openRadarSource('meta')"><span class="source-icon">◎</span><b>Meta Ad Library</b><small>Anúncios públicos e padrões de oferta.</small></button>
+            <button class="radar-source" onclick="openRadarSource('tiktok')"><span class="source-icon">▶</span><b>TikTok Creative Center</b><small>Top Ads, formatos e inspiração criativa.</small></button>
+            <button class="radar-source" onclick="openRadarSource('google')"><span class="source-icon">⌕</span><b>Pesquisa Google</b><small>Concorrentes, ofertas e presença local.</small></button>
+            <button class="radar-source" onclick="openRadarSource('instagram')"><span class="source-icon">▣</span><b>Instagram via busca</b><small>Encontre perfis/posts públicos relacionados.</small></button>
+          </div>
+        </div>
+
+        <div class="radar-tabs">
+          <button class="radar-tab active" data-radar-tab="overview">Visão Geral</button>
+          <button class="radar-tab" data-radar-tab="signals">Registrar Sinais</button>
+          <button class="radar-tab" data-radar-tab="library">Biblioteca Observada</button>
+          <button class="radar-tab" data-radar-tab="recommendations">Ideias de Anúncio</button>
+          <button class="radar-tab" data-radar-tab="history">Histórico</button>
+        </div>
+
+        <div class="radar-panel active" id="radar-overview">
+          <div class="radar-grid-4">
+            <div class="radar-kpi"><span>Sinais analisados</span><b id="radarSignalCount">0</b><small>Referências registradas</small></div>
+            <div class="radar-kpi"><span>Plataformas cobertas</span><b id="radarPlatformCount">0</b><small>Diversidade de fontes</small></div>
+            <div class="radar-kpi"><span>Engajamento médio</span><b id="radarAvgEngagement">—</b><small>Quando visualizações foram informadas</small></div>
+            <div class="radar-kpi"><span>Score de oportunidade</span><b id="radarOpportunity">0/100</b><small>Força da evidência registrada</small></div>
+          </div>
+
+          <div class="section-grid" style="margin-top:14px">
+            <div class="card">
+              <div class="card-head"><div><h3>Padrões que mais aparecem</h3><p>Calculados a partir dos sinais cadastrados para este cliente.</p></div></div>
+              <div id="radarLeaders"></div>
+              <div class="radar-formula"><b>Score:</b> considera quantidade de sinais, diversidade de fontes e engajamento observado. Ele é um indicador interno de evidência/oportunidade — não uma promessa de resultado.</div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div><h3>Oportunidade</h3><p>Leitura consolidada do radar.</p></div></div>
+              <div class="radar-score" id="radarScoreRing" style="--score:0%"><div class="radar-score-content"><b id="radarScoreValue">0</b><span>/ 100</span></div></div>
+              <div class="diagnosis" id="radarDiagnosis" style="margin-top:12px"><strong>Sem dados suficientes</strong>Registre sinais públicos para o sistema comparar os padrões.</div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:14px">
+            <div class="card-head"><div><h3>Temas e interesses observados</h3><p>Palavras registradas nos sinais de mercado.</p></div></div>
+            <div class="radar-tag-cloud" id="radarKeywords"><span class="radar-tag">Nenhum tema ainda</span></div>
+          </div>
+        </div>
+
+        <div class="radar-panel" id="radar-signals">
+          <div class="card">
+            <div class="card-head"><div><h3>Registrar um sinal público</h3><p>Uma referência pode ser anúncio, post, vídeo, página, tendência ou criativo de concorrente.</p></div><span class="badge">Não copie — analise o padrão</span></div>
+            <form id="radarSignalForm">
+              <div class="signal-form-grid">
+                <div class="form-group"><label>Fonte / Plataforma</label><select class="field" id="rsPlatform"><option>Instagram</option><option>Facebook / Meta Ads</option><option>TikTok</option><option>Google Trends</option><option>Google Search</option><option>Site / Landing Page</option><option>Outro</option></select></div>
+                <div class="form-group"><label>Concorrente / Perfil</label><input class="field" id="rsCompetitor" placeholder="Nome da empresa/perfil"></div>
+                <div class="form-group"><label>URL pública</label><input class="field" id="rsUrl" placeholder="https://..."></div>
+                <div class="form-group"><label>Formato</label><select class="field" id="rsFormat"><option>Vídeo vertical</option><option>Imagem</option><option>Carrossel</option><option>Story</option><option>Reels</option><option>Pesquisa / Texto</option><option>Landing Page</option><option>Outro</option></select></div>
+                <div class="form-group"><label>Estilo visual</label><select class="field" id="rsVisual"><option>Produto em close</option><option>Antes e depois</option><option>Pessoa usando produto</option><option>UGC / Depoimento</option><option>Preço / Oferta em destaque</option><option>Bastidores</option><option>Prova social</option><option>Design clean</option><option>Outro</option></select></div>
+                <div class="form-group"><label>Ângulo / Gancho</label><input class="field" id="rsHook" placeholder="Ex.: economia, urgência, demonstração"></div>
+                <div class="form-group"><label>CTA</label><input class="field" id="rsCTA" placeholder="Ex.: Peça agora"></div>
+                <div class="form-group"><label>Oferta</label><input class="field" id="rsOffer" placeholder="Ex.: kit com 20% OFF"></div>
+                <div class="form-group"><label>Palavras / interesses</label><input class="field" id="rsKeywords" placeholder="Separe por vírgula"></div>
+              </div>
+
+              <div class="signal-metrics" style="margin-top:10px">
+                <div class="form-group"><label>Visualizações</label><input class="field" id="rsViews" type="number" min="0"></div>
+                <div class="form-group"><label>Curtidas</label><input class="field" id="rsLikes" type="number" min="0"></div>
+                <div class="form-group"><label>Comentários</label><input class="field" id="rsComments" type="number" min="0"></div>
+                <div class="form-group"><label>Compartilhamentos</label><input class="field" id="rsShares" type="number" min="0"></div>
+              </div>
+
+              <div class="form-grid" style="margin-top:10px">
+                <div class="form-group"><label>Imagem / screenshot opcional</label><input class="field" id="rsImageFile" type="file" accept="image/*"><div class="photo-note">A imagem fica somente neste navegador. Para evitar lotar o armazenamento, use screenshots leves.</div></div>
+                <div class="form-group"><label>Imagem por URL opcional</label><input class="field" id="rsImageUrl" placeholder="https://.../imagem.jpg"></div>
+              </div>
+              <img class="signal-preview" id="rsPreview" alt="Prévia do criativo observado">
+
+              <div class="form-group" style="margin-top:10px"><label>Observação</label><textarea class="field" id="rsNote" placeholder="O que chamou atenção? Como a oferta foi apresentada?"></textarea></div>
+              <button class="btn btn-primary">Salvar sinal no Radar</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="radar-panel" id="radar-library">
+          <div class="card">
+            <div class="card-head"><div><h3>Biblioteca observada</h3><p>Referências públicas registradas para o cliente selecionado.</p></div><button class="btn btn-light" onclick="exportRadarCSV()">Exportar CSV</button></div>
+            <div class="signal-list-grid" id="radarSignalLibrary"></div>
+          </div>
+        </div>
+
+        <div class="radar-panel" id="radar-recommendations">
+          <div class="card">
+            <div class="card-head"><div><h3>Ideias geradas a partir do Radar</h3><p>Combinações originais baseadas nos padrões observados — não cópias dos concorrentes.</p></div><button class="btn btn-primary" onclick="sendRadarIdeasToCreatives()">+ Enviar ideias para Criativos</button></div>
+            <div class="reco-grid" id="radarRecommendations"></div>
+          </div>
+        </div>
+
+        <div class="radar-panel" id="radar-history">
+          <div class="card">
+            <div class="card-head"><div><h3>Histórico de análises</h3><p>Compare como os sinais e a oportunidade evoluem ao longo do tempo.</p></div><button class="btn btn-light" onclick="saveRadarSnapshot()">Salvar fotografia de hoje</button></div>
+            <div id="radarHistory"></div>
+          </div>
+        </div>
+      </div>
+
       <div class="page" id="page-reports">
         <div class="page-head"><div><h2>Financeiro & Relatórios</h2><p>Visível somente para Administradores.</p></div><button class="btn btn-primary" onclick="openEntryModal()">+ Lançamento</button></div>
         <div class="grid4">
@@ -568,7 +760,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
           <div class="section-grid">
             <div class="card">
               <div class="card-head"><div><h3>Perfis de acesso</h3><p>Regras aplicadas no painel.</p></div></div>
-              <div class="role-rule"><b>Administrador</b><span>Acesso total: clientes, valores, custos, caixa, pagamentos, gráficos financeiros, relatórios, Central de Tráfego Pago, auditorias, checklists, histórico de otimizações, usuários, configurações do sistema e parâmetros do site.</span></div>
+              <div class="role-rule"><b>Administrador</b><span>Acesso total: clientes, valores, custos, caixa, pagamentos, gráficos financeiros, relatórios, Central de Tráfego Pago, Radar de Mercado & Criativos, auditorias, checklists, histórico de otimizações, usuários, configurações do sistema e parâmetros do site.</span></div>
               <div class="role-rule"><b>Funcionário</b><span>Acesso a cadastro e execução: clientes, serviços, tarefas e criativos. Não visualiza contrato, pagamentos, caixa, custos, relatórios financeiros ou configurações administrativas.</span></div>
               <div class="role-rule"><b>Cliente</b><span>Acesso somente ao próprio cadastro: serviços contratados, valor contratado, pagamentos do mês, caixa disponível, utilização detalhada e progresso das entregas.</span></div>
               <div class="notice">Importante: esta versão foi preparada para GitHub Pages e usa login local para demonstração. Para segurança real e acesso de vários dispositivos/clientes, publique o mesmo front-end com Firebase Authentication + Firestore.</div>
@@ -731,6 +923,14 @@ function ensureTrafficSchema(){
 }
 ensureTrafficSchema();
 
+function ensureRadarSchema(){
+  if(!db.radarSignals) db.radarSignals=[];
+  if(!db.radarSnapshots) db.radarSnapshots=[];
+  localStorage.setItem(DB_KEY,JSON.stringify(db));
+}
+ensureRadarSchema();
+
+
 function saveDB(){localStorage.setItem(DB_KEY,JSON.stringify(db));renderAll()}
 function clientById(id){return db.clients.find(c=>c.id===id)}
 function paymentTotal(clientId){return db.entries.filter(e=>e.clientId===clientId&&e.type==='Pagamento'&&monthKey(e.date)===currentMonth).reduce((s,e)=>s+Number(e.amount||0),0)}
@@ -763,19 +963,20 @@ function enterApp(){
 function applyFinancialVisibility(){document.querySelectorAll('.admin-fin-field').forEach(el=>el.classList.toggle('hidden',!isAdmin()))}
 
 function goPage(name){
- if(name==='traffic'&&!isAdmin())return;if(name==='reports'&&!isAdmin())return;if(name==='settings'&&!isAdmin())return;if(name==='clientportal'&&!isClient())return;
+ if(name==='traffic'&&!isAdmin())return;if(name==='radar'&&!isAdmin())return;if(name==='reports'&&!isAdmin())return;if(name==='settings'&&!isAdmin())return;if(name==='clientportal'&&!isClient())return;
  if(['clients','services','tasks','creatives'].includes(name)&&isClient())return;
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+name)?.classList.add('active');
  document.querySelectorAll('.nav-btn[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
- const titles={dashboard:'Dashboard',clients:'Clientes',services:'Serviços',tasks:'Tarefas',creatives:'Criativos',traffic:'Central de Tráfego Pago',reports:'Financeiro & Relatórios',clientportal:'Portal do Cliente',settings:'Configurações'};
+ const titles={dashboard:'Dashboard',clients:'Clientes',services:'Serviços',tasks:'Tarefas',creatives:'Criativos',traffic:'Central de Tráfego Pago',radar:'Radar de Mercado & Criativos',reports:'Financeiro & Relatórios',clientportal:'Portal do Cliente',settings:'Configurações'};
  pageTitle.textContent=titles[name]||'Sistema';sidebar.classList.remove('open');if(name==='dashboard'&&isAdmin())setTimeout(drawFinanceChart,40)
 }
 document.querySelectorAll('.nav-btn[data-page]').forEach(b=>b.onclick=()=>goPage(b.dataset.page));mobileMenu.onclick=()=>sidebar.classList.toggle('open');
 if(document.querySelectorAll('.traffic-tab').length){document.querySelectorAll('.traffic-tab').forEach(b=>b.onclick=()=>openTrafficTab(b.dataset.trafficTab));}
+if(document.querySelectorAll('.radar-tab').length){document.querySelectorAll('.radar-tab').forEach(b=>b.onclick=()=>openRadarTab(b.dataset.radarTab));}
 
 function renderAll(){
  if(!currentUser)return;
- ensureTrafficSchema();populateSelects();renderDashboard();renderClients();renderServices();renderTasks();renderCreatives();if(isAdmin())renderTraffic();renderReports();renderClientPortal();renderUsers();renderSettings();renderAlerts();applyFinancialVisibility();
+ ensureTrafficSchema();ensureRadarSchema();populateSelects();renderDashboard();renderClients();renderServices();renderTasks();renderCreatives();if(isAdmin()){renderTraffic();renderRadar();}renderReports();renderClientPortal();renderUsers();renderSettings();renderAlerts();applyFinancialVisibility();
 }
 function renderDashboard(){
  const active=db.clients.filter(c=>c.status==='Ativo');
@@ -1113,6 +1314,224 @@ function renderTrafficLogs(){
  if(!tlDate.value)tlDate.value=iso()
 }
 function deleteTrafficLog(id){if(!isAdmin())return;db.trafficLogs=db.trafficLogs.filter(l=>l.id!==id);localStorage.setItem(DB_KEY,JSON.stringify(db));renderTrafficLogs()}
+
+
+// ===== RADAR DE MERCADO & CRIATIVOS =====
+let radarPendingImage='';
+
+function openRadarTab(name){
+ document.querySelectorAll('.radar-tab').forEach(x=>x.classList.toggle('active',x.dataset.radarTab===name));
+ document.querySelectorAll('.radar-panel').forEach(x=>x.classList.remove('active'));
+ document.getElementById('radar-'+name)?.classList.add('active');
+ if(name==='library')renderRadarLibrary();
+ if(name==='recommendations')renderRadarRecommendations();
+ if(name==='history')renderRadarHistory();
+}
+
+function radarClientId(){return document.getElementById('radarClient')?.value||db.clients[0]?.id||''}
+function radarSignalsForClient(id=radarClientId()){return (db.radarSignals||[]).filter(s=>s.clientId===id)}
+function countBy(arr,key){
+ const m={};arr.forEach(x=>{const v=String(x[key]||'').trim();if(v)m[v]=(m[v]||0)+1});return m
+}
+function leaderOf(map){
+ const entries=Object.entries(map);if(!entries.length)return null;
+ entries.sort((a,b)=>b[1]-a[1]);return {name:entries[0][0],count:entries[0][1]}
+}
+function weightedEngagement(s){
+ const views=Number(s.views||0), likes=Number(s.likes||0), comments=Number(s.comments||0), shares=Number(s.shares||0);
+ const weighted=likes+comments*2+shares*3;
+ return views>0 ? weighted/views*100 : null;
+}
+function radarAnalysisData(){
+ const sigs=radarSignalsForClient();
+ const platforms=[...new Set(sigs.map(s=>s.platform).filter(Boolean))];
+ const rates=sigs.map(weightedEngagement).filter(v=>v!=null&&isFinite(v));
+ const avgRate=rates.length?rates.reduce((a,b)=>a+b,0)/rates.length:null;
+ const formats=countBy(sigs,'format'), visuals=countBy(sigs,'visual'), ctas=countBy(sigs,'cta'), hooks=countBy(sigs,'hook');
+ const formatLeader=leaderOf(formats), visualLeader=leaderOf(visuals), ctaLeader=leaderOf(ctas), hookLeader=leaderOf(hooks);
+
+ // Score transparente: evidência + diversidade + engajamento observado.
+ const evidence=Math.min(40,sigs.length*5);
+ const diversity=Math.min(25,platforms.length*6.25);
+ const engagement=avgRate==null?0:Math.min(35,avgRate*7);
+ const score=Math.round(Math.min(100,evidence+diversity+engagement));
+
+ const keywords={};
+ sigs.forEach(s=>(s.keywords||[]).forEach(k=>{k=String(k).trim().toLowerCase();if(k)keywords[k]=(keywords[k]||0)+1}));
+ const topKeywords=Object.entries(keywords).sort((a,b)=>b[1]-a[1]).slice(0,12).map(x=>x[0]);
+ return {sigs,platforms,avgRate,formats,visuals,ctas,hooks,formatLeader,visualLeader,ctaLeader,hookLeader,score,topKeywords};
+}
+function renderRadar(){
+ if(!isAdmin())return;
+ ensureRadarSchema();
+ const sel=document.getElementById('radarClient');if(!sel)return;
+ const old=sel.value;
+ sel.innerHTML=db.clients.map(c=>`<option value="${c.id}">${esc(c.company)}</option>`).join('');
+ if(old&&db.clients.some(c=>c.id===old))sel.value=old;
+ if(!sel.dataset.bound){
+   sel.addEventListener('change',()=>{
+     const c=clientById(sel.value); if(c&&!radarNiche.value)radarNiche.value=c.niche||'';
+     renderRadarOverview();renderRadarLibrary();renderRadarRecommendations();renderRadarHistory();
+   });
+   sel.dataset.bound='1';
+ }
+ const c=clientById(sel.value); if(c&&!radarNiche.value)radarNiche.value=c.niche||'';
+ renderRadarOverview();renderRadarLibrary();renderRadarRecommendations();renderRadarHistory();
+ bindRadarImageInput();
+}
+function bindRadarImageInput(){
+ const f=document.getElementById('rsImageFile');if(!f||f.dataset.bound)return;
+ f.addEventListener('change',e=>{
+   const file=e.target.files?.[0];radarPendingImage='';
+   if(!file){rsPreview.style.display='none';return}
+   if(file.size>900000){toast('Use uma imagem menor que 900 KB para não lotar o armazenamento local.');f.value='';return}
+   const r=new FileReader();r.onload=()=>{radarPendingImage=r.result;rsPreview.src=radarPendingImage;rsPreview.style.display='block'};r.readAsDataURL(file)
+ });
+ const url=document.getElementById('rsImageUrl');
+ url.addEventListener('input',()=>{if(url.value.trim()){rsPreview.src=url.value.trim();rsPreview.style.display='block'}else if(!radarPendingImage){rsPreview.style.display='none'}});
+ f.dataset.bound='1';
+}
+function renderRadarOverview(){
+ const a=radarAnalysisData();
+ radarSignalCount.textContent=a.sigs.length;
+ radarPlatformCount.textContent=a.platforms.length;
+ radarAvgEngagement.textContent=a.avgRate==null?'—':a.avgRate.toFixed(2)+'%';
+ radarOpportunity.textContent=a.score+'/100';
+ radarScoreValue.textContent=a.score;
+ radarScoreRing.style.setProperty('--score',a.score+'%');
+
+ const leaderCard=(title,o,empty='Sem dados')=>`<div class="radar-leader"><b>${title}: ${o?esc(o.name):empty}</b><span>${o?`${o.count} ocorrência(s) entre os sinais registrados`:'Registre mais referências para comparar.'}</span></div>`;
+ radarLeaders.innerHTML=
+   leaderCard('Formato mais recorrente',a.formatLeader)+
+   leaderCard('Estilo visual mais recorrente',a.visualLeader)+
+   leaderCard('CTA mais recorrente',a.ctaLeader)+
+   leaderCard('Ângulo/gancho mais recorrente',a.hookLeader);
+
+ radarKeywords.innerHTML=a.topKeywords.length?a.topKeywords.map(k=>`<span class="radar-tag">${esc(k)}</span>`).join(''):'<span class="radar-tag">Nenhum tema ainda</span>';
+
+ let cls='',title='Sem dados suficientes',msg='Registre referências públicas para o Radar comparar formatos, estilos, CTAs e engajamento.';
+ if(a.sigs.length>=2&&a.score<45){cls='orange';title='🟠 Evidência inicial';msg='Já há alguns sinais, mas a base ainda é pequena ou concentrada em poucas fontes. Pesquise mais referências antes de escolher um único padrão.'}
+ if(a.score>=45&&a.score<70){cls='';title='🔵 Oportunidade em formação';msg=`O padrão está ficando mais claro${a.formatLeader?' — formato recorrente: '+a.formatLeader.name:''}. Use isso como hipótese para criar testes próprios, não como garantia de resultado.`}
+ if(a.score>=70){cls='green';title='🟢 Boa base de evidências';msg=`Há diversidade suficiente para montar testes. Priorize ${a.visualLeader?.name||'o visual dominante'} em combinação com ${a.formatLeader?.name||'o formato dominante'} e valide com os dados reais do cliente.`}
+ radarDiagnosis.className='diagnosis '+cls;radarDiagnosis.innerHTML=`<strong>${title}</strong>${msg}`;
+}
+function radarSearchTerm(){
+ const niche=(radarNiche.value||clientById(radarClientId())?.niche||'').trim();
+ const region=(radarRegion.value||'').trim();
+ return [niche,region].filter(Boolean).join(' ');
+}
+function openRadarSource(type){
+ const q=radarSearchTerm();if(!q){toast('Informe o nicho ou região antes de pesquisar.');return}
+ let url='';
+ if(type==='trends')url='https://trends.google.com/trends/explore?geo=BR&q='+encodeURIComponent(q);
+ if(type==='meta')url='https://www.facebook.com/ads/library/';
+ if(type==='tiktok')url='https://ads.tiktok.com/business/creativecenter/inspiration/topads/pc/en';
+ if(type==='google')url='https://www.google.com/search?q='+encodeURIComponent(q+' concorrentes ofertas');
+ if(type==='instagram')url='https://www.google.com/search?q='+encodeURIComponent('site:instagram.com '+q);
+ if(url)window.open(url,'_blank','noopener');
+}
+radarSignalForm?.addEventListener('submit',e=>{
+ e.preventDefault();if(!isAdmin())return;
+ const signal={
+  id:uid(),clientId:radarClientId(),date:iso(),platform:rsPlatform.value,competitor:rsCompetitor.value.trim(),
+  url:rsUrl.value.trim(),format:rsFormat.value,visual:rsVisual.value,hook:rsHook.value.trim(),
+  cta:rsCTA.value.trim(),offer:rsOffer.value.trim(),
+  keywords:rsKeywords.value.split(',').map(x=>x.trim()).filter(Boolean),
+  views:+rsViews.value||0,likes:+rsLikes.value||0,comments:+rsComments.value||0,shares:+rsShares.value||0,
+  image:radarPendingImage||rsImageUrl.value.trim(),note:rsNote.value.trim()
+ };
+ db.radarSignals.push(signal);
+ try{localStorage.setItem(DB_KEY,JSON.stringify(db))}
+ catch(err){
+   db.radarSignals.pop();
+   toast('O navegador ficou sem espaço. Remova imagens grandes ou exporte os dados.');
+   return;
+ }
+ radarSignalForm.reset();radarPendingImage='';rsPreview.style.display='none';rsPreview.removeAttribute('src');
+ renderRadarOverview();renderRadarLibrary();renderRadarRecommendations();toast('Sinal salvo no Radar.');
+});
+function renderRadarLibrary(){
+ if(!isAdmin())return;const sigs=[...radarSignalsForClient()].reverse();
+ radarSignalLibrary.innerHTML=sigs.length?sigs.map(s=>{
+   const er=weightedEngagement(s);
+   const img=s.image?`<img src="${esc(s.image)}" alt="Referência visual">`:'✦';
+   return `<div class="signal-card">
+    <div class="signal-image">${img}</div>
+    <div class="signal-body">
+      <span class="badge">${esc(s.platform)}</span>
+      <h4>${esc(s.competitor||s.visual||'Referência observada')}</h4>
+      <p>${esc(s.format)} · ${esc(s.visual)}${s.hook?' · '+esc(s.hook):''}</p>
+      <div class="signal-stats">
+        ${s.views?`<span class="signal-stat">👁 ${Number(s.views).toLocaleString('pt-BR')}</span>`:''}
+        ${s.likes?`<span class="signal-stat">♥ ${Number(s.likes).toLocaleString('pt-BR')}</span>`:''}
+        ${s.comments?`<span class="signal-stat">💬 ${Number(s.comments).toLocaleString('pt-BR')}</span>`:''}
+        ${s.shares?`<span class="signal-stat">↗ ${Number(s.shares).toLocaleString('pt-BR')}</span>`:''}
+        ${er!=null?`<span class="signal-stat">Taxa pond. ${er.toFixed(2)}%</span>`:''}
+      </div>
+      ${s.offer?`<p style="margin-top:8px"><b>Oferta:</b> ${esc(s.offer)}</p>`:''}
+      ${s.cta?`<p><b>CTA:</b> ${esc(s.cta)}</p>`:''}
+      ${s.note?`<p style="margin-top:6px">${esc(s.note)}</p>`:''}
+      <div style="display:flex;gap:6px;margin-top:9px">
+       ${s.url?`<a class="small" href="${esc(s.url)}" target="_blank" rel="noopener">Abrir fonte</a>`:''}
+       <button class="small" onclick="deleteRadarSignal('${s.id}')">Excluir</button>
+      </div>
+    </div>
+   </div>`
+ }).join(''):'<div class="empty">Nenhum sinal registrado para este cliente.</div>';
+}
+function deleteRadarSignal(id){
+ if(!isAdmin()||!confirm('Excluir esta referência do Radar?'))return;
+ db.radarSignals=db.radarSignals.filter(s=>s.id!==id);localStorage.setItem(DB_KEY,JSON.stringify(db));
+ renderRadarOverview();renderRadarLibrary();renderRadarRecommendations();
+}
+function radarIdeas(){
+ const a=radarAnalysisData(), c=clientById(radarClientId());
+ const niche=(radarNiche.value||c?.niche||'negócio').trim();
+ const goal=radarGoal.value||'Vendas';
+ const visual=a.visualLeader?.name||'Produto em close';
+ const format=a.formatLeader?.name||'Vídeo vertical';
+ const cta=a.ctaLeader?.name||'Fale agora pelo WhatsApp';
+ const hook=a.hookLeader?.name||'Demonstração do benefício';
+ const keyword=a.topKeywords[0]||niche;
+ return [
+  {title:'Demonstração visual',body:`Use ${visual.toLowerCase()} em ${format.toLowerCase()} para mostrar o principal benefício de ${niche}.`,hook:`Gancho: “Veja na prática por que ${keyword} faz diferença.”`,cta:`CTA: ${cta}`},
+  {title:'Comparação / problema → solução',body:`Crie uma peça original mostrando o problema cotidiano e a solução oferecida pelo cliente. Objetivo: ${goal}.`,hook:`Gancho: “Você ainda enfrenta isso no seu dia a dia?”`,cta:`CTA: ${cta}`},
+  {title:'Oferta + prova',body:`Combine oferta clara, prova social/demonstração e uma chamada simples. Use o padrão observado como hipótese, sem copiar concorrentes.`,hook:`Gancho sugerido: ${hook}.`,cta:`CTA: ${cta}`}
+ ];
+}
+function renderRadarRecommendations(){
+ if(!isAdmin())return;const ideas=radarIdeas();
+ radarRecommendations.innerHTML=ideas.map((x,i)=>`<div class="reco-card"><div class="num">IDEIA ${String(i+1).padStart(2,'0')}</div><h4>${esc(x.title)}</h4><p>${esc(x.body)}</p><ul><li>${esc(x.hook)}</li><li>${esc(x.cta)}</li></ul></div>`).join('');
+}
+function runRadarAnalysis(){
+ if(!isAdmin())return;
+ renderRadarOverview();renderRadarRecommendations();
+ const a=radarAnalysisData();
+ openRadarTab('overview');
+ if(!a.sigs.length)toast('Abra as fontes, registre alguns sinais e analise novamente.');
+ else toast(`Radar atualizado: ${a.sigs.length} sinais · score ${a.score}/100.`);
+}
+function sendRadarIdeasToCreatives(){
+ if(!isAdmin())return;const cid=radarClientId(),ideas=radarIdeas();
+ ideas.forEach((x,i)=>db.creatives.push({id:uid(),clientId:cid,name:`Radar — ${x.title}`,format:'Vídeo',status:'Em criação',text:`${x.body}\n${x.hook}\n${x.cta}`}));
+ localStorage.setItem(DB_KEY,JSON.stringify(db));renderCreatives();toast('3 ideias enviadas para a Biblioteca de Criativos.');
+}
+function saveRadarSnapshot(){
+ if(!isAdmin())return;const a=radarAnalysisData(),c=clientById(radarClientId());
+ db.radarSnapshots.push({id:uid(),clientId:radarClientId(),date:iso(),score:a.score,signals:a.sigs.length,platforms:a.platforms.length,format:a.formatLeader?.name||'',visual:a.visualLeader?.name||'',niche:radarNiche.value.trim(),region:radarRegion.value.trim()});
+ localStorage.setItem(DB_KEY,JSON.stringify(db));renderRadarHistory();toast('Fotografia do Radar salva.');
+}
+function renderRadarHistory(){
+ if(!isAdmin())return;const cid=radarClientId();const arr=(db.radarSnapshots||[]).filter(x=>x.clientId===cid).sort((a,b)=>b.date.localeCompare(a.date));
+ radarHistory.innerHTML=arr.length?arr.map(x=>`<div class="radar-history-item"><b>${new Date(x.date+'T12:00:00').toLocaleDateString('pt-BR')}</b><div><b>${esc(x.niche||clientById(cid)?.niche||'Análise')}</b><span>${x.signals} sinais · ${x.platforms} fonte(s) · ${esc(x.format||'sem formato líder')}</span></div><span class="radar-history-score">${x.score}/100</span></div>`).join(''):'<div class="empty">Nenhuma fotografia salva ainda.</div>';
+}
+function exportRadarCSV(){
+ if(!isAdmin())return;const sigs=radarSignalsForClient();if(!sigs.length){toast('Não há sinais para exportar.');return}
+ const rows=[['Data','Plataforma','Concorrente','URL','Formato','Visual','Gancho','CTA','Oferta','Palavras','Views','Likes','Comentários','Compartilhamentos','Observação']];
+ sigs.forEach(s=>rows.push([s.date,s.platform,s.competitor,s.url,s.format,s.visual,s.hook,s.cta,s.offer,(s.keywords||[]).join('|'),s.views,s.likes,s.comments,s.shares,s.note]));
+ const csv=rows.map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(';')).join('\n');
+ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Radar-HS-HN.csv';a.click();URL.revokeObjectURL(a.href)
+}
 
 restoreSession();
 </script>
