@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#041525">
-<title>Sistema de Clientes | HS Start Digital + HN Marketing</title>
+<title>Sistema de Clientes | HS Start Digital + HN Marketing — Tráfego Pago</title>
 <style>
 :root{
   --navy:#041525;--navy2:#062a49;--blue:#087ce1;--cyan:#21c7ff;--gold:#ffb400;
@@ -178,6 +178,54 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
   .routine-row{grid-template-columns:1fr}
 }
 
+
+/* ===== PORCENTAGENS AUTOMÁTICAS — CENTRAL DE TRÁFEGO ===== */
+.traffic-summary-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 15px
+}
+.traffic-summary-card{
+  background:#fff;border:1px solid #e0eaf4;border-radius:15px;padding:13px;
+  box-shadow:0 6px 20px rgba(0,28,54,.04)
+}
+.traffic-summary-card span{
+  display:block;font-size:9px;text-transform:uppercase;letter-spacing:.06em;
+  color:#738497;font-weight:950
+}
+.traffic-summary-card b{
+  display:block;font-size:23px;margin:5px 0 2px;color:#0a6ebf
+}
+.traffic-summary-card small{font-size:9px;color:#75879a}
+.stage-percent-wrap{
+  margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:4px;min-width:84px
+}
+.stage-percent{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:62px;padding:5px 8px;border-radius:999px;
+  background:#edf6ff;color:#1267a6;font-size:10px;font-weight:950
+}
+.traffic-stage.done .stage-percent{background:#eafff4;color:#087247}
+.stage-mini-progress{
+  width:84px;height:6px;border-radius:999px;background:#e7eef6;overflow:hidden
+}
+.stage-mini-progress i{
+  display:block;height:100%;width:0;border-radius:999px;
+  background:linear-gradient(90deg,#087ce1,#20cdfa);transition:.22s
+}
+.traffic-stage.done .stage-mini-progress i{
+  background:linear-gradient(90deg,#18a66a,#50d6a0)
+}
+.preflight-progress{
+  height:9px;background:#e7eef6;border-radius:999px;overflow:hidden;margin:10px 0 0
+}
+.preflight-progress i{
+  display:block;height:100%;width:0;border-radius:999px;
+  background:linear-gradient(90deg,#ff9418,#ffbf38,#18a66a);transition:.22s
+}
+@media(max-width:820px){
+  .traffic-summary-grid{grid-template-columns:1fr 1fr}
+  .stage-percent-wrap{min-width:70px}
+}
+
 </style>
 </head>
 <body>
@@ -289,12 +337,19 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
           <select class="field" id="trafficClientSelect"></select>
           <button class="btn btn-primary" onclick="saveTrafficPlan()">Salvar progresso</button>
           <button class="btn btn-light" onclick="resetTrafficPlan()">Reiniciar checklist</button>
-          <span class="badge green" id="trafficAutosave">✓ salvamento local</span>
+          <span class="badge green" id="trafficAutosave">✓ percentuais e OK salvos automaticamente</span>
         </div>
 
         <div class="traffic-progress-wrap">
           <div class="traffic-progress-top"><b>Progresso do setup e operação</b><span id="trafficProgressText">0% concluído</span></div>
           <div class="traffic-progress"><i id="trafficProgressBar"></i></div>
+        </div>
+
+        <div class="traffic-summary-grid">
+          <div class="traffic-summary-card"><span>Progresso geral</span><b id="trafficSummaryPercent">0%</b><small>Baseado em todos os OK marcados</small></div>
+          <div class="traffic-summary-card"><span>Itens concluídos</span><b id="trafficSummaryChecks">0/0</b><small>Checklist total da operação</small></div>
+          <div class="traffic-summary-card"><span>Etapas 100%</span><b id="trafficSummaryStages">0/10</b><small>Etapas totalmente finalizadas</small></div>
+          <div class="traffic-summary-card"><span>Pré-publicação</span><b id="trafficSummaryPreflight">0%</b><small>Auditoria antes de publicar</small></div>
         </div>
 
         <div class="traffic-tabs">
@@ -419,6 +474,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoratio
           <div class="card">
             <div class="card-head"><div><h3>AUDITAR CAMPANHA antes de publicar</h3><p>O administrador deve conseguir marcar todos os itens abaixo.</p></div><span class="badge orange" id="preflightStatus">Pendente</span></div>
             <div class="preflight" id="preflightChecklist"></div>
+            <div class="preflight-progress"><i id="preflightProgressBar"></i></div>
           </div>
           <div class="traffic-callout" style="margin-top:12px"><b>Regra HS/HN:</b> uma campanha só deve receber o status “Liberada para publicação” quando destino, mensuração, orçamento, criativo, CTA e aprovação tiverem sido conferidos.</div>
         </div>
@@ -920,8 +976,17 @@ function renderTraffic(){
  const plan=getTrafficPlan(); if(!plan)return;
  trafficStageGrid.innerHTML=TRAFFIC_STAGES.map(stage=>{
    const done=stage.items.every(it=>!!plan.checks[it[0]]);
-   return `<div class="traffic-stage ${done?'done':''}">
-     <div class="stage-head"><div class="stage-num">${stage.n}</div><div><h3>${esc(stage.title)}</h3><p>${esc(stage.desc)}</p></div></div>
+   const stageChecked=stage.items.filter(it=>!!plan.checks[it[0]]).length;
+   const stagePct=stage.items.length?Math.round(stageChecked/stage.items.length*100):0;
+   return `<div class="traffic-stage ${done?'done':''}" data-stage-id="${stage.id}">
+     <div class="stage-head">
+       <div class="stage-num">${stage.n}</div>
+       <div><h3>${esc(stage.title)}</h3><p>${esc(stage.desc)}</p></div>
+       <div class="stage-percent-wrap">
+         <span class="stage-percent" id="stagePct_${stage.id}">${stagePct}%</span>
+         <div class="stage-mini-progress"><i id="stageBar_${stage.id}" style="width:${stagePct}%"></i></div>
+       </div>
+     </div>
      <div class="check-list">${stage.items.map(it=>`<label class="traffic-check"><input type="checkbox" data-traffic-check="${it[0]}" ${plan.checks[it[0]]?'checked':''}><span><b>${esc(it[1])}</b><small>${esc(it[2])}</small></span></label>`).join('')}</div>
    </div>`
  }).join('');
@@ -935,9 +1000,28 @@ function renderTraffic(){
 }
 function updateTrafficProgress(){
  const p=getTrafficPlan();if(!p)return;
- const ids=TRAFFIC_STAGES.flatMap(s=>s.items.map(i=>i[0]));const checked=ids.filter(id=>p.checks[id]).length;
+ const ids=TRAFFIC_STAGES.flatMap(s=>s.items.map(i=>i[0]));
+ const checked=ids.filter(id=>p.checks[id]).length;
  const pct=ids.length?Math.round(checked/ids.length*100):0;
- trafficProgressBar.style.width=pct+'%';trafficProgressText.textContent=`${pct}% concluído · ${checked}/${ids.length} itens`;
+ const completedStages=TRAFFIC_STAGES.filter(stage=>stage.items.every(it=>!!p.checks[it[0]])).length;
+
+ trafficProgressBar.style.width=pct+'%';
+ trafficProgressText.textContent=`${pct}% concluído · ${checked}/${ids.length} itens`;
+
+ if(document.getElementById('trafficSummaryPercent')) trafficSummaryPercent.textContent=pct+'%';
+ if(document.getElementById('trafficSummaryChecks')) trafficSummaryChecks.textContent=`${checked}/${ids.length}`;
+ if(document.getElementById('trafficSummaryStages')) trafficSummaryStages.textContent=`${completedStages}/${TRAFFIC_STAGES.length}`;
+
+ TRAFFIC_STAGES.forEach(stage=>{
+   const stageChecked=stage.items.filter(it=>!!p.checks[it[0]]).length;
+   const stagePct=stage.items.length?Math.round(stageChecked/stage.items.length*100):0;
+   const pctEl=document.getElementById('stagePct_'+stage.id);
+   const barEl=document.getElementById('stageBar_'+stage.id);
+   const card=document.querySelector(`[data-stage-id="${stage.id}"]`);
+   if(pctEl)pctEl.textContent=stagePct+'%';
+   if(barEl)barEl.style.width=stagePct+'%';
+   if(card)card.classList.toggle('done',stagePct===100);
+ });
 }
 function saveTrafficPlan(silent=false){
  if(!isAdmin())return;const p=getTrafficPlan();if(!p)return;
@@ -1006,9 +1090,18 @@ function renderPreflight(){
  renderPreflightStatus()
 }
 function renderPreflightStatus(){
- const p=getTrafficPlan();if(!p)return;const ok=PREFLIGHT_ITEMS.filter(it=>p.preflight[it[0]]).length,total=PREFLIGHT_ITEMS.length;
- preflightStatus.textContent=ok===total?'✓ LIBERADA PARA PUBLICAÇÃO':`${ok}/${total} conferidos`;
+ const p=getTrafficPlan();if(!p)return;
+ const ok=PREFLIGHT_ITEMS.filter(it=>p.preflight[it[0]]).length,total=PREFLIGHT_ITEMS.length;
+ const pct=total?Math.round(ok/total*100):0;
+
+ preflightStatus.textContent=ok===total?`✓ LIBERADA · ${pct}%`:`${pct}% · ${ok}/${total} conferidos`;
  preflightStatus.className='badge '+(ok===total?'green':'orange');
+
+ const bar=document.getElementById('preflightProgressBar');
+ if(bar)bar.style.width=pct+'%';
+
+ const summary=document.getElementById('trafficSummaryPreflight');
+ if(summary)summary.textContent=pct+'%';
 }
 trafficLogForm?.addEventListener('submit',e=>{
  e.preventDefault();if(!isAdmin())return;const cid=getTrafficClientId();db.trafficLogs.push({id:uid(),clientId:cid,date:tlDate.value||iso(),platform:tlPlatform.value,change:tlChange.value.trim(),reason:tlReason.value.trim(),user:currentUser.name});
